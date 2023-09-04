@@ -1,0 +1,111 @@
+\documentclass[fleqn]{article}
+
+\usepackage{geometry}
+\usepackage{amsmath, nccmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage[nodisplayskipstretch]{setspace}
+\usepackage{float}
+
+\title{Homework 1}
+\author{Owen Sowatzke}
+\date{September 12, 2023}
+
+\begin{document}
+
+	\setlength{\abovedisplayskip}{0pt}
+	\setlength{\belowdisplayskip}{0pt}
+	\setlength{\abovedisplayshortskip}{0pt}
+	\setlength{\belowdisplayshortskip}{0pt}
+	\setlength{\mathindent}{0pt}
+	\doublespacing
+	\maketitle
+	
+	\begin{enumerate}[nolistsep]
+	
+		\item[2.7] Determine whether each of the following signals is periodic. If the signal is periodic, state its period.
+		
+		\begin{enumerate}[nolistsep]
+			
+			\item[(b)] $x[n] = e^{j({3\pi}n/4)}$
+			
+			\begin{align*}
+			\frac{\omega}{2\pi} = \frac{k}{N}
+			\end{align*}
+			
+			\begin{align*}
+			\frac{3\pi/4}{2\pi} = \frac{k}{N}
+			\end{align*}
+			
+			\begin{align*}
+			\frac{3}{8} = \frac{k}{N}
+			\end{align*}
+			
+			Because $\frac{k}{N}$ is rational, the signal is periodic, and the period of the signal is $N = 8$.
+			
+			\item[(d)] $x[n] = e^{j{\pi}n/\sqrt{2}}$
+			
+			\begin{align*}
+			\frac{\omega}{2\pi} = \frac{k}{N}
+			\end{align*}
+			
+			\begin{align*}
+			\frac{\pi/\sqrt{2}}{2\pi} = \frac{k}{N}
+			\end{align*}
+			
+			\begin{align*}
+			\frac{1}{2\sqrt{2}} = \frac{k}{N}
+			\end{align*}
+			
+			Because $\frac{k}{N}$ is irrational, the signal is not periodic.
+			
+		\end{enumerate}
+		\item[2.21] A discrete-time signal $x[n]$ is shown in Figure \ref{prob_statement}.
+		
+		%\renewcommand{\thefigure}{P2.21}	
+	
+		\begin{figure}[H]		\centerline{\fbox{\includegraphics[width=0.35\textwidth]{p2.21_problem_statement.png}}}
+		\caption{Discrete Time Signal $x[n]$}
+		\label{prob_statement}
+		\end{figure}
+		
+		Sketch and label carefully each of the following signals:
+		
+		\begin{enumerate}[nolistsep]
+			\item[(c)] $x[2n]$
+			
+			%\renewcommand{\thefigure}{\arabic{figure}}
+			%\setcounter{figure}{0}
+			
+			\begin{figure}[H]				
+			\centerline{\fbox{\includegraphics[width=0.35\textwidth]{p2.21_c.png}}}
+		\caption{Discrete Time Signal $x[2n]$}
+		\label{part_c}
+		\end{figure}
+		
+			\item[(e)] $x[n - 1]\delta[n - 3]$
+			
+			\begin{figure}[H]
+			\centerline{\fbox{\includegraphics[width=0.35\textwidth]{p2.21_e_x_nm1.png}}}
+		\caption{Discrete Time Signal $x[n-1]$}
+		\label{part_e_x_nm1}
+		\end{figure}
+			
+			\begin{figure}[H]
+			\centerline{\fbox{\includegraphics[width=0.35\textwidth]{p2.21_e_delta_nm3.png}}}
+		\caption{Discrete Time Signal $\delta[n-3]$}
+		\label{part_e_delta_nm3}
+		\end{figure}
+		
+		\begin{figure}[H]
+			\centerline{\fbox{\includegraphics[width=0.35\textwidth]{p2.21_e.png}}}
+		\caption{Discrete Time Signal $x[n-1]\delta[n-3]$}
+		\label{part_e}
+		\end{figure}
+		
+		\end{enumerate}
+		
+		
+	\end{enumerate}
+\end{document}
