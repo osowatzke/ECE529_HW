@@ -51,7 +51,7 @@
 		\end{enumerate}\break
 		\item[2.21] A discrete-time signal $x[n]$ is shown in Figure \ref{prob_statement}.
 		
-		%\renewcommand{\thefigure}{P2.21}	
+		\renewcommand{\thefigure}{P2.21}	
 	
 		\begin{figure}[H]		\centerline{\fbox{\includegraphics[width=0.5\textwidth]{p2.21_problem_statement.png}}}
 		\caption{Discrete Time Signal $x[n]$}
@@ -63,8 +63,7 @@
 		\begin{enumerate}[nolistsep]
 			\item[(c)] $x[2n]$
 			
-			%\renewcommand{\thefigure}{\arabic{figure}}
-			%\setcounter{figure}{0}
+			\renewcommand{\thefigure}{P2.21-C}
 			
 			\begin{figure}[H]				
 			\centerline{\fbox{\includegraphics[width=0.5\textwidth]{p2.21_c.png}}}
@@ -76,17 +75,23 @@
 			
 			To produce a sketch of $x[n - 1]\delta[n - 3]$, first sketch $x[n - 1]$ and $\delta[n - 3]$. Then, multiply $x[n - 1]$ and $\delta[n - 3]$ element-wise, and plot the result.
 			
+			\renewcommand{\thefigure}{P2.21-E-1}
+			
 			\begin{figure}[H]
 			\centerline{\fbox{\includegraphics[width=0.5\textwidth]{p2.21_e_x_nm1.png}}}
 		\caption{Discrete Time Signal $x[n-1]$}
 		\label{part_e_x_nm1}
 		\end{figure}
 			
+			\renewcommand{\thefigure}{P2.21-E-2}
+			
 			\begin{figure}[H]
 			\centerline{\fbox{\includegraphics[width=0.5\textwidth]{p2.21_e_delta_nm3.png}}}
 		\caption{Discrete Time Signal $\delta[n-3]$}
 		\label{part_e_delta_nm3}
 		\end{figure}
+		
+		\renewcommand{\thefigure}{P2.21-E-3}
 		
 		\begin{figure}[H]
 			\centerline{\fbox{\includegraphics[width=0.5\textwidth]{p2.21_e.png}}}
@@ -199,6 +204,12 @@
 		
 		\item[2.28] Four input-output pairs of a particular system $S$ are specified in Figure P.28-1
 		
+			\begin{figure}[H]
+			\centerline{\fbox{\includegraphics[width=0.5\textwidth]{p2.28_problem_statement.png}}}
+			\caption{Input-Output Pairs of System $S$}
+			\label{prob_statement_2_28}
+			\end{figure}
+		
 			\begin{enumerate}
 				\item[(c)] Suppose (2) and (3) are input-output pairs of a particular system $S_2$, and the system is known to be LTI. What is $h[n]$, the impulse response of the system?
 				
@@ -248,7 +259,7 @@
 			
 			$ = \frac{1}{2}(2\delta[n-1] + 2\delta[n-3])$
 			
-			$ = \delta[n-1] + \delta[n-3]$
+			$\mathbf{ = \delta[n-1] + \delta[n-3]}$
 			\end{enumerate}
 		
 	\end{enumerate}
