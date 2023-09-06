@@ -36,7 +36,7 @@
 			
 			Because $\frac{\omega}{2\pi}$ is rational, there exists integers $k$ and $N$ such that ${\omega}N = 2{\pi}k$.
 			
-			\textbf{$\therefore x[n]$ is periodic with a fundamental period $N = 8$.}
+			\textbf{$\mathbf{\therefore x[n]}$ is periodic with a fundamental period $\mathbf{N = 8}$.}
 			
 			\item[(d)] $x[n] = e^{j{\pi}n/\sqrt{2}}$
 			
@@ -46,14 +46,14 @@
 			
 			Because $\frac{\omega}{2\pi}$ is irrational, there does not exist integers $k$ and $N$ such that ${\omega}N = 2{\pi}k$.
 			
-			\textbf{$\therefore x[n]$ is not periodic.}
+			\textbf{$\mathbf{\therefore x[n]}$ is not periodic.}
 			
-		\end{enumerate}
+		\end{enumerate}\break
 		\item[2.21] A discrete-time signal $x[n]$ is shown in Figure \ref{prob_statement}.
 		
 		%\renewcommand{\thefigure}{P2.21}	
 	
-		\begin{figure}[H]		\centerline{\fbox{\includegraphics[width=0.35\textwidth]{p2.21_problem_statement.png}}}
+		\begin{figure}[H]		\centerline{\fbox{\includegraphics[width=0.5\textwidth]{p2.21_problem_statement.png}}}
 		\caption{Discrete Time Signal $x[n]$}
 		\label{prob_statement}
 		\end{figure}
@@ -67,27 +67,29 @@
 			%\setcounter{figure}{0}
 			
 			\begin{figure}[H]				
-			\centerline{\fbox{\includegraphics[width=0.35\textwidth]{p2.21_c.png}}}
+			\centerline{\fbox{\includegraphics[width=0.5\textwidth]{p2.21_c.png}}}
 		\caption{Discrete Time Signal $x[2n]$}
 		\label{part_c}
-		\end{figure}
+		\end{figure} \break
 		
 			\item[(e)] $x[n - 1]\delta[n - 3]$
 			
+			To produce a sketch of $x[n - 1]\delta[n - 3]$, first sketch $x[n - 1]$ and $\delta[n - 3]$. Then, multiply $x[n - 1]$ and $\delta[n - 3]$ element-wise, and plot the result.
+			
 			\begin{figure}[H]
-			\centerline{\fbox{\includegraphics[width=0.35\textwidth]{p2.21_e_x_nm1.png}}}
+			\centerline{\fbox{\includegraphics[width=0.5\textwidth]{p2.21_e_x_nm1.png}}}
 		\caption{Discrete Time Signal $x[n-1]$}
 		\label{part_e_x_nm1}
 		\end{figure}
 			
 			\begin{figure}[H]
-			\centerline{\fbox{\includegraphics[width=0.35\textwidth]{p2.21_e_delta_nm3.png}}}
+			\centerline{\fbox{\includegraphics[width=0.5\textwidth]{p2.21_e_delta_nm3.png}}}
 		\caption{Discrete Time Signal $\delta[n-3]$}
 		\label{part_e_delta_nm3}
 		\end{figure}
 		
 		\begin{figure}[H]
-			\centerline{\fbox{\includegraphics[width=0.35\textwidth]{p2.21_e.png}}}
+			\centerline{\fbox{\includegraphics[width=0.5\textwidth]{p2.21_e.png}}}
 		\caption{Discrete Time Signal $x[n-1]\delta[n-3]$}
 		\label{part_e}
 		\end{figure}
@@ -103,15 +105,17 @@
 				
 					\item[(1)] Check whether the system is stable:
 			
-					Let $y[n] = T(x[n])$
+					Let $y[n] = T(x[n]) = (cos{\pi}n)x[n]$
 			
-					If $|x[n]| \leq B_x\ \forall n$
+					Assume $|x[n]|$ is a bounded signal. Then $\exists\ B_x < \infty$ such that  $|x[n]| \leq B_x\ \forall\ n$
 			
-					$|y[n]| = |(cos{\pi}n)x[n]| \leq |cos{\pi}n||x[n]| \leq B_x$
+					$|y[n]| = |(cos{\pi}n)x[n]| = |cos{\pi}n||x[n]| \leq |x[n]| \leq B_x$
 			
 					For every bounded $x[n]$ the output $y[n]$ is also bounded.
+					
+					i.e. $|y[n]| \leq B_y \forall\ n$ where $B_y = B_x$					
 			
-					$\therefore$ the system is stable.
+					\textbf{$\mathbf{\therefore}$ the system is stable.}
 					
 					\item[(2)] Check whether the system is causal:
 					
@@ -119,7 +123,7 @@
 					
 					The output $y[n]$ does not depend on future values of $x[n]$.
 					
-					$\therefore$ the system is causal.
+					\textbf{$\mathbf{\therefore}$ the system is causal.}
 					
 					\item[(3)] Check whether the system is linear:
 					
@@ -133,7 +137,7 @@
 					
 					$ = ay_1[n] + by_2[n]$
 					
-					Because $T(ax_1[n] + bx_2[n]) = ay_1[n] + by_2[n]$, the system is linear.
+					\textbf{Because $\mathbf{T(ax_1[n] + bx_2[n]) = ay_1[n] + by_2[n]}$, the system is linear.}
 					
 					\item[(4)] Check whether the system is time invariant:
 					
@@ -141,7 +145,7 @@
 					
 					$y[n-n_0] = (cos{\pi}(n-n_0))x[n-n_0]$
 					
-					Because $y[n-n_0] \neq T(x[n-n_0])$, the system is not time invariant.
+					\textbf{Because $\mathbf{y[n-n_0] \neq T(x[n-n_0])}$, the system is not time invariant}.
 				\end{enumerate}
 					
 				\item[(c)] $T(x[n]) = x[n]\sum_{k=0}^{\infty}{\delta[n-k]} = x[n]u[n]$
@@ -151,13 +155,15 @@
 			
 					Let $y[n] = T(x[n])$
 			
-					If $|x[n]| \leq B_x\ \forall n$
+					Assume $|x[n]|$ is a bounded signal. Then $\exists\ B_x < \infty$ such that  $|x[n]| \leq B_x\ \forall\ n$
 			
 					$|y[n]| = |x[n]u[n]| \leq |x[n]| \leq B_x$
 			
 					For every bounded $x[n]$ the output $y[n]$ is also bounded.
 			
-					$\therefore$ the system is stable.
+					i.e. $|y[n]| \leq B_y \forall\ n$ where $B_y = B_x$
+					
+					\textbf{$\mathbf{\therefore}$ the system is stable.}
 					
 					\item[(2)] Check whether the system is causal:
 					
@@ -165,7 +171,7 @@
 					
 					The output $y[n]$ does not depend on future values of $x[n]$.
 					
-					$\therefore$ the system is causal.
+					\textbf{$\mathbf{\therefore}$ the system is causal.}
 					
 					\item[(3)] Check whether the system is linear:
 					
@@ -179,7 +185,7 @@
 					
 					$ = ay_1[n] + by_2[n]$
 					
-					Because $T(ax_1[n] + bx_2[n]) = ay_1[n] + by_2[n]$, the system is linear.
+					\textbf{Because $\mathbf{T(ax_1[n] + bx_2[n]) = ay_1[n] + by_2[n]}$, the system is linear}.
 					
 					\item[(4)] Check whether the system is time invariant:
 					
@@ -187,11 +193,8 @@
 					
 					$y[n-n_0] = x[n-n_0]u[n-n_0]$
 					
-					Because $y[n-n_0] \neq T(x[n-n_0])$, the system is not time invariant.
-				\end{enumerate}
-			
-			
-			
+					\textbf{Because $\mathbf{y[n-n_0] \neq T(x[n-n_0])}$, the system is not time invariant}.
+				\end{enumerate}			
 		\end{enumerate}
 		
 		\item[2.28] Four input-output pairs of a particular system $S$ are specified in Figure P.28-1
