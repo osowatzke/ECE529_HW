@@ -73,7 +73,7 @@
 		
 			\item[(e)] $x[n - 1]\delta[n - 3]$
 			
-			To produce a sketch of $x[n - 1]\delta[n - 3]$, first sketch $x[n - 1]$ and $\delta[n - 3]$. Then, multiply $x[n - 1]$ and $\delta[n - 3]$ element-wise, and plot the result.
+			To produce a sketch of $x[n - 1]\delta[n - 3]$, first sketch $x[n - 1]$ and $\delta[n - 3]$. Then, multiply $x[n - 1]$ and $\delta[n - 3]$ element-wise and sketch the result.
 			
 			\renewcommand{\thefigure}{P2.21-E-1}
 			
@@ -118,7 +118,7 @@
 			
 					For every bounded $x[n]$ the output $y[n]$ is also bounded.
 					
-					i.e. $|y[n]| \leq B_y \forall\ n$ where $B_y = B_x$					
+					i.e. $|y[n]| \leq B_y\ \forall\ n$ where $B_y = B_x$					
 			
 					\textbf{$\mathbf{\therefore}$ the system is stable.}
 					
@@ -166,7 +166,7 @@
 			
 					For every bounded $x[n]$ the output $y[n]$ is also bounded.
 			
-					i.e. $|y[n]| \leq B_y \forall\ n$ where $B_y = B_x$
+					i.e. $|y[n]| \leq B_y\ \forall\ n$ where $B_y = B_x$
 					
 					\textbf{$\mathbf{\therefore}$ the system is stable.}
 					
@@ -213,7 +213,7 @@
 			\begin{enumerate}
 				\item[(c)] Suppose (2) and (3) are input-output pairs of a particular system $S_2$, and the system is known to be LTI. What is $h[n]$, the impulse response of the system?
 				
-				Let $x_1[n]$ and $y_1[n]$ be the input-output pairs defined by (2), and let $x_2[n]$ and $y_2[n]$ be the input-output pairs define by (3).
+				Let $x_1[n]$ and $y_1[n]$ be the input-output pairs defined by (2), and let $x_2[n]$ and $y_2[n]$ be the input-output pairs defined by (3).
 				
 			$x_1[n] = \delta[n] + \delta[n-2]$
 			
@@ -225,41 +225,29 @@
 			
 			We can form $\delta[n]$ using a sum of scaled and time shifted copies of $x_1[n]$ and $x_2[n]$. Since $S_2$ is LTI, the impulse response $h[n]$ is equal to the same sum of scaled and time shifted copies of $y_1[n]$ and $y_2[n]$.
 			
-			$x_2[n+1] - x_2[n]$
+			Consider the following combinations of $x_1[n]$ and $x_2[n]$:
 			
-			$ = (\delta[n] + \delta[n-1]) - (\delta[n-1] + \delta[n-2])$
+			$x_2[n+1] - x_2[n]= (\delta[n] + \delta[n-1]) - (\delta[n-1] + \delta[n-2])$
 			
-			$ = \delta[n] + \delta[n-1] - \delta[n-1] - \delta[n-2]$
+			$ = \delta[n] + \delta[n-1] - \delta[n-1] - \delta[n-2] = \delta[n] - \delta[n-2]$
 			
-			$ = \delta[n] - \delta[n-2]$
+			$x_1[n] + (x_2[n+1] - x_2[n]) = \delta[n] + \delta[n-2] + \delta[n] - \delta[n-2] = 2\delta[n]$
 			
-			$x_1[n] + x_2[n+1] - x_2[n]$
+			$\therefore \delta[n]$ can be written in terms of $x_1[n]$ and $x_2[n]$ as follows:
 			
-			$ = \delta[n] + \delta[n-2] + \delta[n] - \delta[n-2]$
+			$\delta[n] = \frac{1}{2}(x_1[n] + (x_2[n+1] - x_2[n])) = \frac{1}{2}(x_1[n] + x_2[n+1] - x_2[n])$
 			
-			$ = 2\delta[n]$
+			Now $h[n]$ can be expressed as follows: 
 			
-			$\Rightarrow \delta[n] = \frac{1}{2}(x_1[n] + x_2[n+1] - x_2[n])$
+			$h[n] = T(\delta[n]) = T(\frac{1}{2}(x_1[n] + x_2[n+1] - x_2[n])) = \frac{1}{2}T(x_1[n] + x_2[n+1] - x_2[n])$
 			
-			$h[n] = T(\delta[n])$
+			$ = \frac{1}{2}(y_1[n] + y_2[n+1] - y_2[n]) = \frac{1}{2}\{(\delta[n-1] + 2\delta[n-3] + \delta[n-5])$
 			
-			$ = T(\frac{1}{2}(x_1[n] + x_2[n+1] - x_2[n]))$
-			
-			$ = \frac{1}{2}T(x_1[n] + x_2[n+1] - x_2[n])$
-			
-			$ = \frac{1}{2}(y_1[n] + y_2[n+1] - y_2[n])$
-			
-			$ = \frac{1}{2}\{\delta[n-1] + 2\delta[n-3] + \delta[n-5]$
-			
-			$ + \delta[n-1] + \delta[n-2] + \delta[n-3] + \delta[n-4]$
-			
-			$ - (\delta[n-2] + \delta[n-3] + \delta[n-4] + \delta[n-5])\}$
+			$ + (\delta[n-1] + \delta[n-2] + \delta[n-3] + \delta[n-4]) - (\delta[n-2] + \delta[n-3] + \delta[n-4] + \delta[n-5])\}$
 			
 			$ = \frac{1}{2}(\delta[n-1] + 2\delta[n-3] + \delta[n-5] + \delta[n-1] - \delta[n-5])$
 			
-			$ = \frac{1}{2}(2\delta[n-1] + 2\delta[n-3])$
-			
-			$\mathbf{ = \delta[n-1] + \delta[n-3]}$
+			$ = \frac{1}{2}(2\delta[n-1] + 2\delta[n-3]) = \mathbf{\delta[n-1] + \delta[n-3]}$
 			\end{enumerate}
 		
 	\end{enumerate}
