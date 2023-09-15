@@ -230,7 +230,47 @@
 					\end{align*}
 					
 					$\therefore |h[n]|$ is absolutely summable and $h[n]$ is stable.
+					
+				\item[(c)] $h[n] = 0.2u[n+2]u[2-n]$
+				
+					$h[n]$ is causal iff $h[n] = 0\ \forall\ n < 0$.
+					
+					$h[n] = 0.2$ for $-2 \leq n \leq 2$
+					
+					$\therefore h[n]$ is not causal.
+					
+					$h[n]$ is stable iff $h[n]$ is absolutely summable.
+					
+					Because $h[n]$ has a finite number of finite coefficients it is absolutely summable.
+					
+					Specifically,
+					
+					\begin{align*}
+						\sum_{n=-\infty}^{\infty}{|h[n]|} = \sum_{n=-\infty}^{\infty}{|0.2u[n+2]u[2-n]|}
+					\end{align*}
+					
+					\begin{align*}
+						 = \sum_{n=-\infty}^{\infty}{0.2u[n+2]u[2-n]} = \sum_{n=-2}^{2}{0.2} = 1 < \infty
+					\end{align*}
+					
+					$\therefore |h[n]|$ is absolutely summable and $h[n]$ is stable.
 			\end{enumerate}
+			
+			Now, we can complete the table given in the problem statement.
+			
+			\begin{center}
+				\begin{tabular}{|c|c|c|}
+					\hline
+					& Causal? (Yes/No) & Stable? (Yes/No) \\
+					\hline
+					(a) & Yes & No \\
+					\hline
+					(b) & No & Yes \\
+					\hline
+					(c) & No & Yes \\
+					\hline
+				\end{tabular}
+			\end{center}
 			
 	\end{enumerate}
 	
