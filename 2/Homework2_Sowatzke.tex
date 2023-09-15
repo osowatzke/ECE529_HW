@@ -169,29 +169,67 @@
 			\begin{enumerate}
 				\item[(a)] $h[n] = 0.5\delta[n] + 0.2u[n-1]$
 				
-				$h[n]$ is causal iff $h[n] = 0\ \forall\ n < 0$.
+					$h[n]$ is causal iff $h[n] = 0\ \forall\ n < 0$.
+					
+					$h[n] = 0\ \forall\ n < 0$.
+					
+					$\therefore h[n]$ is causal.
+					
+					$h[n]$ is stable iff $h[n]$ is absolutely summable.
+					
+					\begin{align*}
+						\sum_{n=-\infty}^{\infty}{|h[n]|} = \sum_{n=-\infty}^{\infty}{|0.5\delta[n] + 0.2u[n-1]|}
+					\end{align*}
+					
+					\begin{align*}
+						= \sum_{n=-\infty}^{\infty}{0.5\delta[n] + 0.2u[n-1]} = \sum_{n=-\infty}^{\infty}{0.5\delta[n]} + \sum_{n=-\infty}^{\infty}{0.2u[n-1]}
+					\end{align*}
 				
-				$h[n] = 0\ \forall\ n < 0$.
+					\begin{align*}
+						= 0.5 + \sum_{n=1}^{\infty}{0.2} = \infty
+					\end{align*}
 				
-				$\therefore h[n]$ is causal.
+					$h[n]$ is not absolutely summable.
 				
-				$h[n]$ is stable iff $h[n]$ is absolutely summable.
+					$\therefore h[n]$ is not stable.
 				
-				\begin{align*}
-					\sum_{n=-\infty}^{\infty}{|h[n]|} = \sum_{n=-\infty}^{\infty}{|0.5\delta[n] + 0.2u[n-1]|}
-				\end{align*}
+				\item[(b)] $h[n] = 3^{-n}u[n+1]$
 				
-				\begin{align*}
-					 = \sum_{n=-\infty}^{\infty}{0.5\delta[n] + 0.2u[n-1]} = \sum_{n=-\infty}^{\infty}{0.5\delta[n]} + \sum_{n=-\infty}^{\infty}{0.2u[n-1]}
-				\end{align*}
-				
-				\begin{align*}
-					= 0.5 + \sum_{n=1}^{\infty}{0.2} = \infty
-				\end{align*}
-				
-				$h[n]$ is not absolutely summable.
-				
-				$\therefore h[n]$ is not stable.
+					$h[n]$ is causal iff $h[n] = 0\ \forall\ n < 0$.
+					
+					$h[-1] = 3^{-(-1)} = 3 \neq 0$.
+					
+					$\therefore h[n]$ is not causal.
+					
+					$h[n]$ is stable iff $h[n]$ is absolutely summable.
+					
+					\begin{align*}
+						\sum_{n=-\infty}^{\infty}{|h[n]|} = \sum_{n=-\infty}^{\infty}{|3^{-n}u[n+1]|} = \sum_{n=-\infty}^{\infty}{3^{-n}u[n+1]} = \sum_{n=-1}^{\infty}{3^{-n}}
+					\end{align*}
+					
+					Let $m = n - 1 \Rightarrow n = m + 1$
+					
+					\begin{align*}
+						\sum_{n=-\infty}^{\infty}{|h[n]|} = \sum_{m=0}^{\infty}{3^{-(m+1)}} = 3^{-1}\sum_{m=0}^{\infty}{3^{-m}} = \frac{1}{3}\sum_{m=0}^{\infty}{(3^{-1})^{m}}
+					\end{align*}
+					
+					\begin{align*}
+						 = \frac{1}{3}\sum_{m=0}^{\infty}{\left(\frac{1}{3}\right)^{m}}
+					\end{align*}
+					
+					Note this summation is of the form:
+					
+					\begin{align*}
+						\sum_{n=0}^{\infty}{a^n} = \frac{1}{1-a} \text{ for } |a| < 1 
+					\end{align*}
+					
+					Because $|\frac{1}{3}| < 1$, the summation converges.
+					
+					\begin{align*}
+						\sum_{n=-\infty}^{\infty}{|h[n]|} = \frac{1}{1-\frac{1}{3}} = \frac{3}{3\left(1-\frac{1}{3}\right)} = \frac{3}{3 - 1} = \frac{3}{2} < \infty
+					\end{align*}
+					
+					$\therefore |h[n]|$ is absolutely summable and $h[n]$ is stable.
 			\end{enumerate}
 			
 	\end{enumerate}
