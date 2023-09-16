@@ -20,7 +20,7 @@
 	\doublespacing
 	\maketitle
 	
-	\begin{enumerate}
+	\begin{enumerate}[nolistsep]
 		\item[1.] Use the graphical method to convolve the following signals. I.e., flip one signal and slide it across the other signal. Show graphs to illustrate your steps.
 		
 		$h[n] = 0.5\delta[n] - 0.25\delta[n-1]$
@@ -141,7 +141,7 @@
 		
 		\item[3.] Consider three LTI systems having the following respective impulse responses:
 		
-			\begin{enumerate}
+			\begin{enumerate}[nolistsep]
 				\item[(a)] $h[n] = 0.5\delta[n] + 0.2u[n-1]$
 				
 				\item[(b)] $h[n] = 3^{-n}u[n+1]$
@@ -166,7 +166,7 @@
 				\end{tabular}
 			\end{center}
 			
-			\begin{enumerate}
+			\begin{enumerate}[nolistsep]
 				\item[(a)] $h[n] = 0.5\delta[n] + 0.2u[n-1]$
 				
 					$h[n]$ is causal iff $h[n] = 0\ \forall\ n < 0$.
@@ -271,6 +271,75 @@
 					\hline
 				\end{tabular}
 			\end{center}
+			
+		\item[4.] For each of the following LTI systems, determine whether the system is FIR or IIR.
+		
+			\begin{enumerate}[nolistsep]
+			
+				\item[(1)] $y[n] = 0.8x[n] + 0.2x[n-1]$
+				
+				To obtain the impulse response of the system, let $x[n] = \delta[n]$.
+				
+				$h[n] = 0.8\delta[n] + 0.2\delta[n-1]$
+				
+				$h[n]$ is finite in length.
+				
+				$\therefore$ the system is an FIR system.
+				
+				\item[(2)] $y[n] = 0.7y[n-1] + 0.3x[n]$
+				
+				Rewrite the difference equation as:
+				
+				$y[n] - 0.7y[n-1] = 0.3x[n]$
+				
+				Take the z-transform of the difference equation.
+				
+				$Y(z) - 0.7z^{-1}Y(z) = 0.3X(z)$
+				
+				$Y(z)(1 - 0.7z^{-1}) = 0.3X(z)$
+				
+				The transfer function of the system is given by
+				
+				\begin{align*}
+					H(z) = \frac{Y(z)}{X(z)} = \frac{0.3}{1 - 0.7z^{-1}}
+				\end{align*}
+				
+				Assume a right-sided signal $h[n]$. This is equivalent to solving for $y[n]$ using the input and previous values of the output.
+				
+				If this is the case, the ROC is $|z| > 0.7$
+				
+				Taking an inverse z transform using the z-transform table, we find that $h[n] = 0.7^{n}u[n]$
+				
+				The length of $h[n]$ is infinite.
+				
+				$\therefore$ the system is an IIR system.
+				
+				\item[(3)] $y[n] = y[n-2] + 0.5x[n] - 0.5x[n-2]$
+				
+				Rewrite the difference equation as:
+				
+				$y[n] - y[n-2] = 0.5x[n] - 0.5x[n-2]$
+				
+				Take the z-transform of the difference equation.
+				
+				$Y(z) - z^{-2}Y(z) = 0.5X(z) - 0.5z^{-2}X(z)$
+				
+				$Y(z)(1 - z^{-2}) = 0.5X(z)(1 - z^{-2})$
+				
+				The transfer function of the system is given by
+				
+				\begin{align*}
+					H(z) = \frac{Y(z)}{X(z)} = \frac{0.5(1 - z^{-2})}{1 - z^{-2}} = 0.5
+				\end{align*}
+				
+				The resulting transform function has no poles or zeros, so its ROC is all z.
+				
+				Taking an inverse z transform using the z-transform table, we find that $h[n] = 0.5\delta[n]$
+				
+				$h[n]$ is finite in length.
+				
+				$\therefore$ the system is an FIR system.				
+			\end{enumerate}
 			
 	\end{enumerate}
 	
