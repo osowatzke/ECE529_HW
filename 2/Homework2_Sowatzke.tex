@@ -341,6 +341,24 @@
 				$\therefore$ the system is an FIR system.				
 			\end{enumerate}
 			
+		\item[5.] Study the Intro-MATLAB document at D2L>Contents>MATLAB. Use MATLAB (or other software) to plot the semilogarithmic magnitude frequency response of the following filter. Submit your code as a separate file that the grader can run.
+		
+		$y[n] = -1.6511y[n-1] - 1.0893y[n-2] - 0.2447y[n-3] + 0.0585x[n]$
+		
+		$- 0.0382x[n-1] + 0.0382x[n-2] - 0.0585x[n-3]$
+		
+		Also, identify whether this is a lowpass, highpass, bandpass, or bandstop filter.
+		
+		Refer to MATLAB submission for code. The resulting plot is shown in Figure \ref{prob5_mag_freq_response}.
+		
+		\begin{figure}[H]				
+			\centerline{\fbox{\includegraphics[width=0.5\textwidth]{prob5_mag_freq_response.png}}}
+			\caption{Plot of the Semilogarithmic Magnitude Frequency Response.}
+			\label{prob5_mag_freq_response}
+		\end{figure}
+		
+		The absolute value of the filter's frequency response is large for $\omega$ close to $\pi$ and small near $0$. Therefore the filter is a highpass filter.
+		
 	\end{enumerate}
 	
 \end{document}
