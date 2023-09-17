@@ -9,8 +9,8 @@ close all;
 clear;
 
 % Numerator and denominator coefficients of transfer function
-% of difference equation specified in problem 5.
-% Type "help filter" for more details on
+% specified by problem 5. Type "help freqz" for more details on
+% formatting arrays of coefficients
 a = [1, 1.6511, 1.0893, 0.2447];
 b = [0.0585, -0.0382, 0.0382, -0.0585];
 
