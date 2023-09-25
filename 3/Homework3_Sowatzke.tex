@@ -144,7 +144,26 @@
 		\item Write a difference equation that characterizes an LTI system whose frequency response is
 		
 			\begin{equation*}
-				
+				H(e^{j\omega}) = \frac{1 + 0.4e^{-j\omega} - 0.7e^{-j2\omega}}{1 - 0.9e^{-j\omega} + 0.2e^{-j2\omega}}
 			\end{equation*}
+			
+			\begin{equation*}
+				\frac{Y(e^{j\omega})}{X(e^{j\omega})} = \frac{1 + 0.4e^{-j\omega} - 0.7e^{-j2\omega}}{1 - 0.9e^{-j\omega} + 0.2e^{-j2\omega}}
+			\end{equation*}
+			
+			$Y(e^{j\omega})(1 - 0.9e^{-j\omega} + 0.2e^{-j2\omega}) = X(e^{j\omega})(1 + 0.4e^{-j\omega} - 0.7e^{-j2\omega})$
+			
+			$Y(e^{j\omega}) - 0.9Y(e^{j\omega})e^{-j\omega} + 0.2Y(e^{j\omega})e^{-j2\omega} = X(e^{j\omega})$
+			
+			$ + 0.4X(e^{j\omega})e^{-j\omega} - 0.7X(e^{j\omega})e^{-j2\omega}$
+			
+			Take the inverse DTFT of both sides of the equation:
+			
+			$y(n) - 0.9y(n-1) + 0.2y(n-2) = x(n) + 0.4x(n-1) - 0.7x(n-2)$
+			
+			Rewrite the equation to solve for $y(n)$ with the input and previous values of the output:
+			
+			$\mathbf{y(n) = 0.9y(n-1) - 0.2y(n-2) + x(n) + 0.4x(n-1) - 0.7x(n-2)}$
+			
 	\end{enumerate}
 \end{document}
