@@ -6,10 +6,10 @@
 \usepackage{etoolbox}
 
 \newcommand{\zerodisplayskip}{
-	\setlength{\abovedisplayskip}{0pt}
-	\setlength{\belowdisplayskip}{0pt}
-	\setlength{\abovedisplayshortskip}{0pt}
-	\setlength{\belowdisplayshortskip}{0pt}
+	\setlength{\abovedisplayskip}{0pt}%
+	\setlength{\belowdisplayskip}{0pt}%
+	\setlength{\abovedisplayshortskip}{0pt}%
+	\setlength{\belowdisplayshortskip}{0pt}%
 	\setlength{\mathindent}{0pt}}
 
 \makeatletter
@@ -21,8 +21,9 @@
 \date{September 28, 2023}
 
 \begin{document}
+	\offinterlineskip
+	\setlength{\lineskip}{12pt}
 	\zerodisplayskip
-	\doublespacing
 	\maketitle
 	
 	\begin{enumerate}[nolistsep]
@@ -36,7 +37,17 @@
 		
 		\begin{enumerate}[nolistsep]	
 			\item $x(n) = 1.2\text{cos}(0.2\pi n - 0.1)\ \forall\ n$
-			
+				
+				$y(n) = 1.2|H(e^{j0.2\pi})|\text{cos}(0.2\pi n - 0.1 + \angle{H(e^{j0.2\pi}}))$
+				
+				\begin{equation*}
+					H(e^{j0.2\pi}) = \frac{1}{1-0.9e^{-j0.2\pi}} = 1.6813e^{-j1.0960}
+				\end{equation*}
+				
+				$\Rightarrow y(n) = 1.2(1.6813)\text{cos}(0.2\pi n - 0.1 + (-1.0960)))$
+				
+				$\mathbf{= 2.0176cos(0.2\pi n - 1.1960)}$
+				
 			\item $x(n) = 0.2\text{sin}(0.4\pi n) + 0.5\text{cos}(0.6\pi n)\ \forall\ n$
 		\end{enumerate}
 	\end{enumerate}
