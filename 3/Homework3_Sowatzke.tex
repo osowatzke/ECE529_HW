@@ -68,5 +68,83 @@
 				
 				$ \mathbf{= 0.1786\text{\textbf{sin}}(0.4{\pi}n - 0.8702) + 0.3251\text{\textbf{cos}}(0.6{\pi}n - 0.5901)}$
 		\end{enumerate}
+		\item Derive the Fourier transform of the following signals:
+		
+			\begin{enumerate}[nolistsep]
+				\item $x(n) = 0.5\delta(n) + 0.4\delta(n-1) + 0.1\delta(n-3)$
+					\begin{equation*}
+						X(e^{j\omega}) = \sum_{n=-\infty}^{\infty}x(n)e^{-j{\omega}n}
+					\end{equation*}
+					
+					\begin{equation*}
+						= \sum_{n=-\infty}^{\infty}(0.5\delta(n) + 0.4\delta(n-1) + 0.1\delta(n-3))e^{-j{\omega}n}
+					\end{equation*}
+					
+					\begin{equation*}
+						= 0.5\sum_{n=-\infty}^{\infty}\delta(n)e^{-j{\omega}n} + 0.4\sum_{n=-\infty}^{\infty}\delta(n-1)e^{-j{\omega}n}
+					\end{equation*}
+					
+					\begin{equation*}
+						 + 0.1\sum_{n=-\infty}^{\infty}\delta(n-3)e^{-j{\omega}n}
+					\end{equation*}
+					
+					\begin{equation*}
+						\mathbf{= 0.5 + 0.4e^{-j\omega} + 0.1e^{-j3\omega}}
+					\end{equation*}
+					
+				\item $x(n) = (0.7)^{n}u(n)$
+				
+					\begin{equation*}
+						X(e^{j\omega}) = \sum_{n=-\infty}^{\infty}x(n)e^{-j{\omega}n}
+					\end{equation*}
+					
+					\begin{equation*}
+						= \sum_{n=-\infty}^{\infty}(0.7)^{n}u(n)e^{-j{\omega}n}
+					\end{equation*}
+					
+					\begin{equation*}
+						= \sum_{n=0}^{\infty}(0.7)^{n}e^{-j{\omega}n}
+					\end{equation*}
+					
+					\begin{equation*}
+						= \sum_{n=0}^{\infty}(0.7e^{-j{\omega}})^n
+					\end{equation*}
+					
+					This summation takes the form of
+					
+					\begin{equation*}
+						\sum_{n=0}^{\infty}a^n = \frac{1}{1-a},\quad |a| < 1
+					\end{equation*}
+					
+					\begin{equation*}
+						\mathbf{\therefore X(e^{j\omega}) = \frac{1}{1 - 0.7e^{-j\omega}}}
+					\end{equation*}
+			\end{enumerate}
+		
+		\pagebreak
+		\item Derive the frequency response, $H(e^{j\omega})$, of the LTI system having the following input/output relationship:
+		
+			$y(n) = -0.4y(n-2)+y(n-3)-0.1x(n+1)+0.8x(n)-0.2x(n-1)$
+			
+			Start by taking the DTFT of both sides of the equation:
+			
+			$Y(e^{j\omega}) = -0.4Y(e^{j\omega})e^{-j2\omega}+Y(e^{j\omega})e^{-j3\omega}-0.1X(e^{j\omega})e^{j\omega}$
+			
+			$+0.8X(e^{j\omega})-0.2X(e^{j\omega})e^{-j\omega}$
+			
+			Group the $Y(e^{j\omega})$ and $X(e^{j\omega})$ terms on either side of the equation:
+			
+			$Y(e^{j\omega})(1 + 0.4e^{-j2\omega} - e^{-j3\omega}) = X(e^{j\omega})(-0.1e^{j\omega} + 0.8 - 0.2e^{-j\omega})$
+			
+			Now solve for $H(e^{j\omega})$:
+			
+			\begin{equation*}
+				\mathbf{H(e^{j\omega}) = \frac{Y(e^{j\omega})}{X(e^{j\omega})} = \frac{-0.1e^{j\omega} + 0.8 - 0.2e^{-j\omega}}{1 + 0.4e^{-j2\omega} - e^{-j3\omega}}}
+			\end{equation*}
+		\item Write a difference equation that characterizes an LTI system whose frequency response is
+		
+			\begin{equation*}
+				
+			\end{equation*}
 	\end{enumerate}
 \end{document}
