@@ -132,8 +132,26 @@ the outermost (largest magnitude) finite pole (i.e. ROC: $|z| > \frac{3}{4}$).
 				The ROC of $H(z)$ includes the unit circle.
 				
 				$\therefore$ the system is stable.
-				
 		\end{enumerate}
+		
+				
+		\item [3.10] Without explicitly solving for $X(z)$ find the ROC of the z-transform of each of the following sequences, and determine whether the Fourier transform converges:
+		
+			\begin{enumerate}[nolistsep]
+				\item [(b)]
+
+					\begin{equation*}				
+						x[n] = \left\{\begin{aligned} 1,& \ -10 \leq n \leq 10, \\ 
+						0,& \ \text{otherwise}, \end{aligned}\right.
+					\end{equation*}
+					
+					$x[n]$ is a finite duration signal, so its ROC will be all of $z$ except possibly $z = 0$ or $z = \infty$.
+					
+					The non-zero $x[n]$ samples for $n > 0$ will create poles at $0$, and the non-zero $x[n]$ samples for $n < 0$ will create poles at $\infty$.
+					
+					\textbf{$\mathbf{\therefore}$ the ROC of the z-transform will be all of $\mathbf{z}$ except for $\mathbf{z=0}$ and $\mathbf{z=\infty}$}.
+					
+			\end{enumerate}
 	\end{enumerate}
 	
 \end{document}
