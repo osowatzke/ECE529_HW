@@ -42,6 +42,29 @@
 		\begin{enumerate}[nolistsep]
 			\item Find the impulse response of the system, $h[n]$.
 			
+			We can find the impulse response, by taking the inverse z-transform of $H(z)$. However, before taking the inverse z-transform, we must first identify the ROC of $H(z)$.
+			
+			Because the system is casual, it must also be right-sided. Therefore, the ROC of its z-transform extends outward from
+the outermost (largest magnitude) finite pole (i.e. ROC: $|z| > \frac{3}{4}$).
+
+			If we expand the numerator of $H(z)$, we can see how it maps to the z-transform pairs in the table.
+			
+			\begin{equation*}
+				H(z) = \frac{1}{1 + \frac{3}{4}z^{-1}} - \frac{z^{-1}}{1 + \frac{3}{4}z^{-1}}
+			\end{equation*}
+			
+			\begin{equation*}
+				a^nu[n] \leftrightarrow \frac{1}{1 - az^{-1}},\ \text{ROC:}\ |z| > |a| 
+			\end{equation*}
+			
+			\begin{equation*}
+				a^{(n-1)}u[n-1] \leftrightarrow \frac{z^{-1}}{1 - az^{-1}},\ \text{ROC:}\ |z| > |a| 
+			\end{equation*}
+			
+			\begin{equation*}
+				\mathbf{\therefore h[n] = \left(-\frac{3}{4}\right)^nu[n] + \left(-\frac{3}{4}\right)^{(n-1)}u[n-1]}
+			\end{equation*}
+			
 			\item Find the output $y[n]$.
 			
 			\item Is the system stable? That is, is $h[n]$ absolutely summable?
