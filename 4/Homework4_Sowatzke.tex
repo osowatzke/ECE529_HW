@@ -1,0 +1,51 @@
+\documentclass[fleqn]{article}
+\usepackage[nodisplayskipstretch]{setspace}
+\usepackage{amsmath, nccmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{etoolbox}
+
+\newcommand{\zerodisplayskip}{
+	\setlength{\abovedisplayskip}{0pt}%
+	\setlength{\belowdisplayskip}{0pt}%
+	\setlength{\abovedisplayshortskip}{0pt}%
+	\setlength{\belowdisplayshortskip}{0pt}%
+	\setlength{\mathindent}{0pt}}
+
+\makeatletter
+	\newenvironment{equationCenter}{\@fleqnfalse\begin{equation*}}{\end{equation*}}
+\makeatother
+
+\title{Homework 4}
+\author{Owen Sowatzke}
+\date{October 24, 2023}
+\setlength{\jot}{0pt}
+
+\begin{document}
+	\offinterlineskip
+	\setlength{\lineskip}{12pt}
+	\zerodisplayskip
+	\maketitle
+	\begin{enumerate}[nolistsep]
+		\item[3.8] The system function of a causal LTI system is
+	
+		\begin{equationCenter}
+			H(z) = \frac{1 - z^{-1}}{1 + \frac{3}{4}z^{-1}}
+		\end{equationCenter}
+		
+		The input to this system is
+		
+		\begin{equationCenter}
+			x[n] = \left(\frac{1}{3}\right)^nu[n] + u[-n-1]
+		\end{equationCenter}
+		
+		\begin{enumerate}[nolistsep]
+			\item Find the impulse response of the system, $h[n]$.
+			
+			\item Find the output $y[n]$.
+			
+			\item Is the system stable? That is, is $h[n]$ absolutely summable?
+		\end{enumerate}
+	\end{enumerate}
+	
+\end{document}
