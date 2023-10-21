@@ -149,8 +149,29 @@ the outermost (largest magnitude) finite pole (i.e. ROC: $|z| > \frac{3}{4}$).
 					
 					The non-zero $x[n]$ samples for $n > 0$ will create poles at $0$, and the non-zero $x[n]$ samples for $n < 0$ will create poles at $\infty$.
 					
-					\textbf{$\mathbf{\therefore}$ the ROC of the z-transform will be all of $\mathbf{z}$ except for $\mathbf{z=0}$ and $\mathbf{z=\infty}$}.
+					\textbf{$\mathbf{\therefore}$ the ROC of the z-transform will be all of $\mathbf{z}$ except for $\mathbf{z=0}$ and $\mathbf{z=\infty}$. Because the unit circle is contained within the ROC of $\mathbf{X(z)}$, the Fourier Transform converges.}
 					
+				\item[(f)] $x[n] = \left(\frac{1}{2}\right)^{n-1}u[n] + (2 + 3j)^{n-2}u[-n-1]$
+				
+				Let $X_1(z) = \left(\frac{1}{2}\right)^{n-1}u[n]$
+				
+				$X_1(z) \propto \left(\frac{1}{2}\right)^{n}u[n]$.
+				
+				$\therefore X_1(z)$ has a ROC of $|z| > \frac{1}{2}$
+				
+				Let $X_2(z) = (2 + 3j)^{n-2}u[-n-1]$
+				
+				$X_2(z) \propto (2 + 3j)^{n}u[-n-1]$.
+				
+				$\therefore X_2(z)$ has a ROC of $|z| < |2 + 3j| = \sqrt{13}$
+				
+				If we denote $R_{X_1}$ as the ROC of $X_1(z)$ and $R_{X_2}$ as the ROC of $X_2(z)$, the ROC of $X_1(z) + X_2(z)$ contains $R_{X_1} \cap R_{X_2}$. If there is no pole-zero cancellation, the ROC of $X_1(z) + X_2(z)$ is exactly $R_{X_1} \cap R_{X_2}$.
+				
+				If we were to simplify the expressions for $X_1(z) + X_2(z)$, we would find the zeros of the expression and conclude that there is no pole-zero cancellation.
+				
+				\textbf{$\mathbf{\therefore}$ the ROC of the z-transform will be $\mathbf{\frac{1}{2} < |z| < \sqrt{13}}$. Because the unit circle is contained within the ROC of $\mathbf{X(z)}$, the Fourier Transform converges.}
+				
+				%The numerator of both $X_1(z)$ and $X_2(z)$ will be real. Therefore, if we were to express $X_1(z) + X_2(z)$ as a single fraction, the numerator would always contain 
 			\end{enumerate}
 	\end{enumerate}
 	
