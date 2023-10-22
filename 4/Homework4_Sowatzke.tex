@@ -131,7 +131,7 @@ the outermost (largest magnitude) finite pole (i.e. ROC: $|z| > \frac{3}{4}$).
 			
 				The ROC of $H(z)$ includes the unit circle.
 				
-				$\therefore$ the system is stable.
+				\textbf{$\mathbf{\therefore}$ the system is stable.}
 		\end{enumerate}
 		
 				
@@ -170,8 +170,50 @@ the outermost (largest magnitude) finite pole (i.e. ROC: $|z| > \frac{3}{4}$).
 				If we were to simplify the expressions for $X_1(z) + X_2(z)$, we would find the zeros of the expression and conclude that there is no pole-zero cancellation.
 				
 				\textbf{$\mathbf{\therefore}$ the ROC of the z-transform will be $\mathbf{\frac{1}{2} < |z| < \sqrt{13}}$. Because the unit circle is contained within the ROC of $\mathbf{X(z)}$, the Fourier Transform converges.}
+			\end{enumerate}
+			
+		\item[3.21] A causal LTI system has the following system function:
+		
+			\begin{equationCenter}
+				H(z) = \frac{4 + 0.25z^{-1}-0.5z^{-2}}{(1-0.25z^{-1})(1 + 0.5z^{-1})}
+			\end{equationCenter}
+		
+			\begin{enumerate}[nolistsep]
+				\item[(a)] What is the ROC for $H(z)$?
 				
-				%The numerator of both $X_1(z)$ and $X_2(z)$ will be real. Therefore, if we were to express $X_1(z) + X_2(z)$ as a single fraction, the numerator would always contain 
+					Because the system is casual, it must also be right-sided. Therefore, the ROC of its z-transform extends outward from
+the outermost (largest magnitude) finite pole.
+
+					\textbf{$\mathbf{\therefore}$ ROC is $\mathbf{|z| > 0.5}$}
+					
+				\item[(b)] Determine if the system is stable or not.
+					The ROC of $H(z)$ includes the unit circle.
+				
+					\textbf{$\mathbf{\therefore}$ the system is stable.}
+				 
+				 \item[(c)] Determine the difference equation that is satisfied by the input $x[n]$ and the output $y[n]$.
+				 
+				 	\begin{equation*}
+				 		H(z) = \frac{Y(z)}{X(z)} = \frac{4 + 0.25z^{-1}-0.5z^{-2}}{(1-0.25z^{-1})(1 + 0.5z^{-1})}
+				 	\end{equation*}
+				 	
+				 	$Y(z)(1-0.25z^{-1})(1 + 0.5z^{-1}) = X(z)(4 + 0.25z^{-1}-0.5z^{-2})$
+				 	
+				 	$Y(z)(1 + 0.25z^{-1} - 0.125z^{-2}) = X(z)(4 + 0.25z^{-1}-0.5z^{-2})$
+				 	
+				 	$Y(z) + 0.25Y(z)z^{-1} - 0.125Y(z)z^{-2}$
+				 	
+				 	$= 4X(z) + 0.25X(z)z^{-1}-0.5X(z)z^{-2}$
+				 	
+				 	Take the inverse z-transform of both sides of the equation.
+				 	
+				 	$y[n] + 0.25y[n-1] - 0.125y[n-2] = 4x[n] + 0.25x[n-1] - 0.5x[n-2]$
+				 	
+				 	Rearrange the terms to obtain a difference equation for $y[n]$
+				 	
+				 	$\mathbf{y[n] = -0.25y[n-1] + 0.125y[n-2]}$
+				 	
+				 	$\mathbf{ + 4x[n] + 0.25x[n-1] - 0.5x[n-2]}$
 			\end{enumerate}
 	\end{enumerate}
 	
