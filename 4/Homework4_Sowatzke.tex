@@ -374,7 +374,48 @@ the outermost (largest magnitude) finite pole.
 					
 						\textbf{Because $\mathbf{h[n]}$ is nonzero at $\mathbf{n = -1}$, the system is not causal. (Note we could have also arrived at this conclusion by noting that there is a pole at $\mathbf{z = \infty}$).}
 				\end{enumerate}
+				
+			\item[3.48] The signal $y[n]$ is the output of an LTI system with impulse response $h[n]$ for a given input $x[n]$. Throughput the problem, assume that $y[n]$ is stable and has a z-transform of $Y(z)$ with the pole-zero diagram shown in Figure \ref{pzmap_y_z_prob_3_48}. The signal $x[n]$ is stable and has the pole-zero diagram shown in Figure \ref{pzmap_x_z_prob_3_48}. 
 					
+				\begin{figure}[H]				
+				\centerline{\fbox{\includegraphics[width=0.5\textwidth]{pzmap_y_z_prob_3_48.png}}}
+				\caption{Pole-Zero Map of Y(z)}
+				\label{pzmap_y_z_prob_3_48}
+				\end{figure}
+				
+				\begin{figure}[H]				
+				\centerline{\fbox{\includegraphics[width=0.5\textwidth]{pzmap_x_z_prob_3_48.png}}}
+				\caption{Pole-Zero Map of X(z)}
+				\label{pzmap_x_z_prob_3_48}
+				\end{figure}
+				
+				\begin{enumerate} [nolistsep]
+					\item[(a)] What is the ROC of $Y(z)$?
+					
+						For $y[n]$ to be stable, its ROC must contain the unit circle.
+						
+						\textbf{$\mathbf{\therefore}$ the ROC of $\mathbf{Y(z)}$ must be $\mathbf{\frac{1}{2} < |z| < 2}$.}
+						
+					\item[(b)] Is $y[n]$ left-sided, right-sided, or two-sided?
+					
+						The ROC of $Y(z)$ is a ring in the z-plane.
+						
+						\textbf{$\mathbf{\therefore y[n]}$ is two-sided.}
+						
+					\item[(c)] What is the ROC of $X(z)$?
+					
+						For $x[n]$ to be stable, its ROC must contain the unit circle.
+						
+						\textbf{$\mathbf{\therefore}$ the ROC of $\mathbf{X(z)}$ must be $\mathbf{|z| > \frac{3}{4}}$.}
+						
+					\item[(d)] Is $x[n]$ a causal sequence? That is, does $x[n] = 0$ for $n < 0$?
+					
+						Because the ROC of $X(z)$ extends outward from the outermost pole, we know that $x[n]$ must be a right-sided signal.
+						
+						For a right-sided signal to be causal, it must not have a pole at $z = \infty$.
+						
+						\textbf{Because $\mathbf{X(z)}$ does not have a pole at $\mathbf{z = \infty}$, $\mathbf{x[n]}$ must be causal.}
+				\end{enumerate}
 	\end{enumerate}
 	
 \end{document}
