@@ -4,6 +4,7 @@
 \usepackage{amssymb}
 \usepackage{enumitem}
 \usepackage{etoolbox}
+\usepackage{scalerel}
 
 \newcommand{\zerodisplayskip}{
 	\setlength{\abovedisplayskip}{0pt}%
@@ -15,6 +16,12 @@
 \makeatletter
 	\newenvironment{equationCenter}{\@fleqnfalse\begin{equation*}}{\end{equation*}}
 \makeatother
+
+\makeatletter
+	\newenvironment{singleSpaceEquation}{\setlength{\lineskip}{0pt}\vspace{12pt}\begin{equation*}\begin{aligned}}{\end{aligned}\end{equation*}}
+\makeatother
+
+\newcommand{\longdiv}{\smash{\mkern-0.43mu\vstretch{1.31}{\hstretch{.7}{)}}\mkern-5.2mu\vstretch{1.31}{\hstretch{.7}{)}}}}
 
 \title{Homework 4}
 \author{Owen Sowatzke}
@@ -218,70 +225,60 @@ the outermost (largest magnitude) finite pole.
 				 \item[(d)] Use a partial fraction expansion to determine the impulse response $h[n]$.
 				 
 				 	\begin{equation*}
-				 		H(z) = \frac{4 + 0.25z^{-1}-0.5z^{-2}}{(1-0.25z^{-1})(1 + 0.5z^{-1})}
+				 		H(z) = \frac{4 + 0.25z^{-1}-0.5z^{-2}}{(1-0.25z^{-1})(1 + 0.5z^{-1})} = \frac{4 + 0.25z^{-1}-0.5z^{-2}}{1 + 0.25z^{-1} - 0.125z^{-2}}
 				 	\end{equation*}
 				 	
-				 	For partial fraction expansion to work, the numerator degree of $H(z)$ must be less than the denominator degree. Because this is not the case for $H(z)$, we must first rewrite $H(z)$ in a form that satisfies this criteria.
-				 	
-				 	\begin{equation*}
-				 		H(z) = \frac{4 + 0.25z^{-1}}{(1-0.25z^{-1})(1 + 0.5z^{-1})} - \frac{0.5z^{-2}}{(1-0.25z^{-1})(1 + 0.5z^{-1})}
-				 	\end{equation*}
-				 	
-				 	$H(z) = H_1(z) - H_2(z)$
-				 	
-				 	Note that the numerator degree of $H_1(z)$ is less than the denominator degree, so we can apply partial fraction expansion to $H_1(z)$.
-				 	
-				 	\begin{equation*}
-				 		H_1(z) = \frac{4 + 0.25z^{-1}}{(1-0.25z^{-1})(1 + 0.5z^{-1})} = \frac{A}{1-0.25z^{-1}} + \frac{B}{1 + 0.5z^{-1}}
-				 	\end{equation*}
-				 	
-				 	\begin{equation*}
-				 		A = \left.\frac{4 + 0.25z^{-1}}{1 + 0.5z^{-1}}\right\vert_{z = 0.25} = \frac{4 + 0.25(4)}{1 + 0.5(4)} = \frac{5}{3}
-				 	\end{equation*}
-				 	
-				 	\begin{equation*}
-				 		B = \left.\frac{4 + 0.25z^{-1}}{1 - 0.25z^{-1}}\right\vert_{z = -0.5} = \frac{4 + 0.25(-2)}{1 - 0.25(-2)} = \frac{3.5}{1.5} = \frac{7}{3}
-				 	\end{equation*}
-				 	
-				 	\begin{equation*}
-				 		H_1(z) = \frac{5/3}{1 - 0.25z^{-1}} + \frac{7/3}{1 + 0.5z^{-1}}
-				 	\end{equation*}
-				 	
-				 	We can take the inverse z-transform of $H_1(z)$ using a table of z-transform pairs to obtain $h_1[n]$.
-				 	
-				 	\begin{equation*}
-				 		h_1[n] = \frac{5}{3}\left(\frac{1}{4}\right)^nu[n] + \frac{7}{3}\left(-\frac{1}{2}\right)^nu[n]
-				 	\end{equation*}
-				 		
-				 	Note that the numerator degree of $H_2(z)$ is still greater than the denominator degree of $H_2(z)$, so we cannot apply partial fraction expansion directly. However, we can perform a partial fraction on $H_2(z)z^2$.
-				 	
-				 	\begin{equation*}
-				 		H_2(z)z^2 = \frac{0.5}{(1-0.25z^{-1})(1 + 0.5z^{-1})} = \frac{A}{1-0.25z^{-1}} + \frac{B}{1 + 0.5z^{-1}}
+				 	For partial fraction expansion to work, the numerator degree of $H(z)$ must be less than the denominator degree. Because this is not the case for $H(z)$, we must first rewrite $H(z)$ in a form that satisfies this criteria. This can be done use long division as shown below:
+						
+					\[
+					\arraycolsep=1pt
+					\renewcommand\arraystretch{1.2}
+					\begin{array}{*1r @{\hskip\arraycolsep}c@{\hskip\arraycolsep} *{11}r}
+        				& & 4 & & & & & \\
+					\cline{2-7}
+					1 + 0.25z^{-1} - 0.125z^{-2} & \longdiv & 4 & + & 0.25z^{-1} & - & 0.5z^{-2}\\
+        				& & 4 & + & z^{-1} & - & 0.5z^{-2} & & & \\
+					\cline{3-7}
+        				& & & - & 0.75z^{-1} & & & &
+					\end{array}
+					\]
+					
+					\begin{equation*}
+						\therefore H(z) = 4 - \frac{0.75z^{-1}}{1 + 0.25z^{-1} - 0.125z^{-2}}
+					\end{equation*}
+					
+					\begin{equation*}
+						= 4 - \frac{0.75z^{-1}}{(1 - 0.25z^{-1})(1 + 0.5z^{-1})}
+					\end{equation*}
+					
+					\pagebreak
+					Note that the numerator degree of the fractional term is now less than the denominator degree. As such, we can expand the fractional term using partial fractional expansion.
+					
+					\begin{equation*}
+						\frac{0.75z^{-1}}{(1 - 0.25z^{-1})(1 + 0.5z^{-1})} = \frac{A}{1 - 0.25z^{-1}} + \frac{B}{1 + 0.5z^{-1}}
+					\end{equation*}
+					
+					\begin{equation*}
+				 		A = \left.\frac{0.75z^{-1}}{1 + 0.5z^{-1}}\right\vert_{z = 0.25} = \frac{0.75(4)}{1 + 0.5(4)} = \frac{3}{3} = 1
 				 	\end{equation*}
 				 	
 				 	\begin{equation*}
-				 		A = \left.\frac{0.5}{1 + 0.5z^{-1}}\right\vert_{z = 0.25} = \frac{0.5}{1 + 0.5(4)} = \frac{0.5}{3} = \frac{1}{6}
+				 		B = \left.\frac{0.75z^{-1}}{1 - 0.25z^{-1}}\right\vert_{z = -0.5} = \frac{0.75(-2)}{1 - 0.25(-2)} = -\frac{1.5}{1.5} = -1
 				 	\end{equation*}
-				 	
-				 	\begin{equation*}
-				 		B = \left.\frac{0.5}{1 - 0.25z^{-1}}\right\vert_{z = -0.5} = \frac{0.5}{1 - 0.25(-2)} = \frac{0.5}{1.5} = \frac{1}{3}
-				 	\end{equation*}
-				 	
-				 	\begin{equation*}
-				 		H_2(z)z^2 = \frac{1/6}{1 - 0.25z^{-1}} + \frac{1/3}{1 + 0.5z^{-1}}
-				 	\end{equation*}
-				 	
-				 	\begin{equation*}
-				 		\Rightarrow H_2(z) = \frac{(1/6)z^{-2}}{1 - 0.25z^{-1}} + \frac{(1/3)z^{-2}}{1 + 0.5z^{-1}}
-				 	\end{equation*}
-				 	
-				 	We can take the inverse z-transform of $H_2(z)$ using a table of z-transform pairs and the time-delay theorem.
-				 	
-				 	\begin{equation*}
-				 		h_2[n] = \frac{1}{6}\left(\frac{1}{4}\right)^{n-2}u[n-2] + \frac{1}{3}\left(-\frac{1}{2}\right)^{n-2}u[n-2]
-				 	\end{equation*}
-				 	
-				 	
+					
+					\begin{equation*}
+						\therefore H(z) = 4 - \left(\frac{1}{1-0.25z^{-1}} - \frac{1}{1+0.5z^{-1}}\right)
+					\end{equation*}
+					
+					\begin{equation*}
+						= 4 - \frac{1}{1-0.25z^{-1}} + \frac{1}{1+0.5z^{-1}}
+					\end{equation*}
+					
+					We can now take the inverse z-transform of $H(z)$ using a table of z-transform pairs.
+					
+					\begin{equation*}
+						\mathbf{h[n] = 4\delta[n] - \left(\frac{1}{4}\right)^nu[n] + \left(-\frac{1}{2}\right)^nu[n]}
+					\end{equation*}
 			\end{enumerate}
 	\end{enumerate}
 	
