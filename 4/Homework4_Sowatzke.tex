@@ -338,6 +338,41 @@ the outermost (largest magnitude) finite pole.
 						\label{pzmap_prob_3_40}
 						\end{figure}
 						
+					\item[(b)] Find the impulse response $h[n]$.
+					
+						\begin{equation*}
+							H(z) = \frac{4z(1 - z^{-1})}{1 - \frac{1}{2}z^{-1}} = \frac{4z - 4}{1 - \frac{1}{2}z^{-1}} = \frac{4z}{1 - \frac{1}{2}z^{-1}} - \frac{4}{1 - \frac{1}{2}z^{-1}}
+						\end{equation*}
+						
+						Take the inverse z-transform of $H(z)$ using a table of z-transform pairs.
+						
+						\begin{equation*}
+							h[n] = 4\left(\frac{1}{2}\right)^{n+1}u[n+1] - 4\left(\frac{1}{2}\right)^{n}u[n]
+						\end{equation*}
+						
+						\begin{equation*}
+							\Rightarrow h[n] = 4\delta[n+1] + 4\left(\frac{1}{2}\right)^{n+1}u[n] - 4\left(\frac{1}{2}\right)^{n}u[n]
+						\end{equation*}
+						
+						\begin{equation*}
+							\Rightarrow h[n] = 4\delta[n+1] + 4\left(\frac{1}{2}\right)\left(\frac{1}{2}\right)^{n}u[n] - 4\left(\frac{1}{2}\right)^{n}u[n]
+						\end{equation*}
+						
+						\begin{equation*}
+							\Rightarrow h[n] = 4\delta[n+1] + 2\left(\frac{1}{2}\right)^{n}u[n] - 4\left(\frac{1}{2}\right)^{n}u[n]
+						\end{equation*}
+						
+						\begin{equation*}
+							\mathbf{\Rightarrow h[n] = 4\delta[n+1] - 2\left(\frac{1}{2}\right)^{n}u[n]}
+						\end{equation*}
+					
+					\item[(c)] Is the system stable?
+					
+						\textbf{The ROC of $\mathbf{H(z)}$ contains the unit circle, so the system is stable.}
+						
+					\item[(d)] Is the system causal?
+					
+						\textbf{Because $\mathbf{h[n]}$ is nonzero at $\mathbf{n = -1}$, the system is not causal. (Note we could have also arrived at this conclusion by noting that there is a pole at $\mathbf{z = \infty}$).}
 				\end{enumerate}
 					
 	\end{enumerate}
