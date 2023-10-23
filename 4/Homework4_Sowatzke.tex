@@ -415,7 +415,60 @@ the outermost (largest magnitude) finite pole.
 						For a right-sided signal to be causal, it must not have a pole at $z = \infty$.
 						
 						\textbf{Because $\mathbf{X(z)}$ does not have a pole at $\mathbf{z = \infty}$, $\mathbf{x[n]}$ must be causal.}
+						
+					\item[(e)] What is $x[0]$?
+					
+						Because $x[n]$ is causal. $x[0] = \displaystyle\lim_{z\to\infty}{X(z)}$
+						
+						\begin{equation*}
+							X(z) = \frac{A\left(z - \frac{1}{4}\right)}{\left(z - \frac{1}{2}\right)\left(z - \frac{3}{4}\right)}
+						\end{equation*}
+						
+						\begin{equation*}
+							\mathbf{x[0] = \displaystyle\lim_{n\to\infty}{X(z)} = \displaystyle\lim_{z\to\infty}{\frac{A\left(z - \frac{1}{4}\right)}{\left(z - \frac{1}{2}\right)\left(z - \frac{3}{4}\right)}} = 0}
+						\end{equation*}
+							
+					\item[(f)] Draw the pole-zero plot of $H(z)$, and specify its ROC.
+					
+					\begin{equation*}
+						H(z) = \frac{Y(z)}{X(z)} = \frac{Bz\left(z - \frac{1}{4}\right)}{\left(z - \frac{1}{2}\right)\left(z - 2\right)}\left(\frac{\left(z - \frac{1}{2}\right)\left(z - \frac{3}{4}\right)}{A\left(z - \frac{1}{4}\right)}\right)
+					\end{equation*}
+					
+					\begin{equation*}
+						\Rightarrow H(z) = \frac{Y(z)}{X(z)} = \frac{Bz\left(z - \frac{3}{4}\right)}{A\left(z - 2\right)}
+					\end{equation*}
+					
+					Let $R_X$ specify the ROC of $X(z)$, $R_H$ specify the ROC of $H(z)$, and $R_Y$ specify the ROC of $Y(z)$. $R_H$ must be chosen such that $R_X \cap R_H$ is contained in $R_Y$. 
+					
+					There are two choices for $R_H$: $|z| < 2$ or $|z| > 2$.
+					
+					Let $R_H$ be $|z| > 2$, then $R_X \cap R_H$ is $|z| > 2$, which is not contained in $R_Y$. Therefore, $R_H$ is not $|z| > 2$.
+					
+					Let $R_H$ be $|z| < 2$, then $R_X \cap R_H$ is $\frac{3}{4} < |z| < 2$, which is contained in $R_Y$. Therefore, $R_H$ is $|z| < 2$.
+					
+					\textbf{The pole-zero diagram of $\mathbf{H(z)}$ is shown in Figure \ref{pzmap_h_z_prob_3_48}. Note that the ROC is $\mathbf{|z| < 2}$.}
+					
+					\begin{figure}[H]				
+					\centerline{\fbox{\includegraphics[width=0.5\textwidth]{pzmap_h_z_prob_3_48.png}}}
+					\caption{Pole-Zero Map of H(z)}
+					\label{pzmap_h_z_prob_3_48}
+					\end{figure}
+					
 				\end{enumerate}
+				
+			\item[(g)] Is $h[n]$ anticausal? That is does $h[n] = 0$ for $n > 0$?
+			
+				Any $H(z)$ can be written in the following form:
+				
+				\begin{equation*}
+					H(z) = \sum_{n = -\infty}^{\infty}h(n)z^{-n}
+				\end{equation*}
+				
+				For $h(n)$ to be anticausal, $h(n) = 0$ for $n > 0$. In other words, $H(z)$ should not contain any terms with negative powers of $z$. Because terms with negative powers of $z$ blow up at $z = 0$, we can check whether any of these terms exist by checking if there are any poles at $z = 0$.
+				
+				Because $H(z)$ has no poles at $z = 0$, $H(z)$ does not contain any negative powers of $z$ and $h[n] = 0$ for $n > 0$.
+				
+				\textbf{$\mathbf{\therefore h[n]}$ is anticausal.}
 	\end{enumerate}
 	
 \end{document}
