@@ -140,7 +140,7 @@ f.Position = pos;
 % plot poles and zeros
 % using scatter instead of pzmap to customize marker size
 scatter(2, 0, 72, 'kx', 'lineWidth',0.75);
-scatter([0 0.25], [0 0], 72, 'ko', 'lineWidth',0.75);
+scatter([0 -0.75], [0 0], 72, 'ko', 'lineWidth',0.75);
 
 % plot real and imaginary axis
 plot([-2 2],[0 0],':k');

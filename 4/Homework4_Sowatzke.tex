@@ -319,15 +319,14 @@ the outermost (largest magnitude) finite pole.
 						\end{equation*}
 						
 						\begin{equation*}
-							\Rightarrow X(z) = \frac{1}{1 - z^{-1}} \quad \text{ROC:}\ |z| > 1
+							X(z) = \frac{1}{1 - z^{-1}} \quad \text{ROC:}\ |z| > 1
 						\end{equation*}
 						
 						\begin{equation*}
 							H(z) = \frac{Y(z)}{X(z)} = \frac{4z(1 - z^{-1})}{1 - \frac{1}{2}z^{-1}}
 						\end{equation*}
 						
-						Because the input and output of the system are both right-sided, we know that the impulse response must be right-sided as well. As such, the ROC of $H(z)$ extends outward from
-the outermost (largest magnitude) finite pole.
+						Because the input and output of the system are both right-sided, we know that the impulse response must be right-sided as well. As such, the ROC of $H(z)$ extends outward from the outermost (largest magnitude) finite pole.
 					
 						\begin{equation*}
 							\mathbf{\therefore H(z) = \frac{Y(z)}{X(z)} = \frac{4z(1 - z^{-1})}{1 - \frac{1}{2}z^{-1}}\quad \text{\textbf{ROC:}}\ |z| > \frac{1}{2}}
@@ -345,7 +344,7 @@ the outermost (largest magnitude) finite pole.
 							H(z) = \frac{4z(1 - z^{-1})}{1 - \frac{1}{2}z^{-1}} = \frac{4z - 4}{1 - \frac{1}{2}z^{-1}} = \frac{4z}{1 - \frac{1}{2}z^{-1}} - \frac{4}{1 - \frac{1}{2}z^{-1}}
 						\end{equation*}
 						
-						Take the inverse z-transform of $H(z)$ using a table of z-transform pairs.
+						Take the inverse z-transform of $H(z)$ using a table of z-transform pairs and the time-delay theorem.
 						
 						\begin{equation*}
 							h[n] = 4\left(\frac{1}{2}\right)^{n+1}u[n+1] - 4\left(\frac{1}{2}\right)^{n}u[n]
@@ -423,21 +422,21 @@ the outermost (largest magnitude) finite pole.
 						Because $x[n]$ is causal. $x[0] = \displaystyle\lim_{z\to\infty}{X(z)}$
 						
 						\begin{equation*}
-							X(z) = \frac{A\left(z - \frac{1}{4}\right)}{\left(z - \frac{1}{2}\right)\left(z - \frac{3}{4}\right)}
+							X(z) = \frac{A\left(z - \frac{1}{4}\right)}{\left(z - \frac{1}{2}\right)\left(z + \frac{3}{4}\right)}
 						\end{equation*}
 						
 						\begin{equation*}
-							\mathbf{x[0] = \displaystyle\lim_{n\to\infty}{X(z)} = \displaystyle\lim_{z\to\infty}{\frac{A\left(z - \frac{1}{4}\right)}{\left(z - \frac{1}{2}\right)\left(z - \frac{3}{4}\right)}} = 0}
+							\mathbf{x[0] = \displaystyle\lim_{n\to\infty}{X(z)} = \displaystyle\lim_{z\to\infty}{\frac{A\left(z - \frac{1}{4}\right)}{\left(z - \frac{1}{2}\right)\left(z + \frac{3}{4}\right)}} = 0}
 						\end{equation*}
 							
 					\item[(f)] Draw the pole-zero plot of $H(z)$, and specify its ROC.
 					
 					\begin{equation*}
-						H(z) = \frac{Y(z)}{X(z)} = \frac{Bz\left(z - \frac{1}{4}\right)}{\left(z - \frac{1}{2}\right)\left(z - 2\right)}\left(\frac{\left(z - \frac{1}{2}\right)\left(z - \frac{3}{4}\right)}{A\left(z - \frac{1}{4}\right)}\right)
+						H(z) = \frac{Y(z)}{X(z)} = \frac{Bz\left(z - \frac{1}{4}\right)}{\left(z - \frac{1}{2}\right)\left(z - 2\right)}\left(\frac{\left(z - \frac{1}{2}\right)\left(z + \frac{3}{4}\right)}{A\left(z - \frac{1}{4}\right)}\right)
 					\end{equation*}
 					
 					\begin{equation*}
-						\Rightarrow H(z) = \frac{Y(z)}{X(z)} = \frac{Bz\left(z - \frac{3}{4}\right)}{A\left(z - 2\right)}
+						\Rightarrow H(z) = \frac{Y(z)}{X(z)} = \frac{Bz\left(z + \frac{3}{4}\right)}{A\left(z - 2\right)}
 					\end{equation*}
 					
 					Let $R_X$ specify the ROC of $X(z)$, $R_H$ specify the ROC of $H(z)$, and $R_Y$ specify the ROC of $Y(z)$. $R_H$ must be chosen such that $R_X \cap R_H$ is contained in $R_Y$. 
