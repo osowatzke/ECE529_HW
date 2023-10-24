@@ -326,7 +326,8 @@ the outermost (largest magnitude) finite pole.
 							H(z) = \frac{Y(z)}{X(z)} = \frac{4z(1 - z^{-1})}{1 - \frac{1}{2}z^{-1}}
 						\end{equation*}
 						
-						Because the input and output of the system are both right-sided, we know that the impulse response must be right-sided as well. As such, the ROC of $H(z)$ extends outward from the outermost (largest magnitude) finite pole.
+						
+						Let $R_X$ specify the ROC of $X(z)$, $R_H$ specify the ROC of $H(z)$, and $R_Y$ specify the ROC of $Y(z)$. $R_H$ must be chosen such that $R_X \cap R_H$ is contained in $R_Y$. 
 					
 						\begin{equation*}
 							\mathbf{\therefore H(z) = \frac{Y(z)}{X(z)} = \frac{4z(1 - z^{-1})}{1 - \frac{1}{2}z^{-1}}\quad \text{\textbf{ROC:}}\ |z| > \frac{1}{2}}
