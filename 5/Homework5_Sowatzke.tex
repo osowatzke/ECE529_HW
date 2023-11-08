@@ -1,0 +1,35 @@
+\documentclass[fleqn]{article}
+\usepackage[nodisplayskipstretch]{setspace}
+\usepackage{amsmath, nccmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+
+\newcommand{\zerodisplayskip}{
+	\setlength{\abovedisplayskip}{0pt}%
+	\setlength{\belowdisplayskip}{0pt}%
+	\setlength{\abovedisplayshortskip}{0pt}%
+	\setlength{\belowdisplayshortskip}{0pt}%
+	\setlength{\mathindent}{0pt}}
+	
+\title{Homework 5}
+\author{Owen Sowatzke}
+\date{November 16, 2023}
+
+\begin{document}
+	\offinterlineskip
+	\setlength{\lineskip}{12pt}
+	\zerodisplayskip
+	\maketitle
+	
+	\begin{enumerate}[nolistsep]
+		\item. Design a discrete-time second-order Butterworth lowpass filter with cutoff frequency equivalent to $f_c = 1.6 \text{kHz}$. Assume the ADC sampling frequency is $f_s = 8 \text{kHz}$. Use the impulse invariance method with $T_d = 1$.
+		
+			\begin{enumerate}[nolistsep]
+				\item. Calculate the cutoff frequency for the desired digital filter (i.e., convert the analog specs to digital specs.)
+				
+					\begin{equation*}
+						\omega_c = \frac{2{\pi}f_c}{f_s} = \frac{2{\pi}(1.6\ \text{kHz})}{8\ \text{kHz}} = \mathbf{0.4\pi}
+					\end{equation*}
+			\end{enumerate}
+	\end{enumerate}
+\end{document}
