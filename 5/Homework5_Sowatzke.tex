@@ -3,6 +3,10 @@
 \usepackage{amsmath, nccmath}
 \usepackage{amssymb}
 \usepackage{enumitem}
+\usepackage{matlab-prettifier}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{environ,capt-of}
 
 \newcommand{\zerodisplayskip}{
 	\setlength{\abovedisplayskip}{0pt}%
@@ -11,6 +15,20 @@
 	\setlength{\belowdisplayshortskip}{0pt}%
 	\setlength{\mathindent}{0pt}}
 	
+\let\oldfigure\figure% Store original figure float environment
+\let\endoldfigure\endfigure
+\RenewEnviron{figure}[1][H]{% Update figure environment
+  %\par\vspace{\intextsep}% Assume in-text placement, so insert appropriate vertical spacing
+  \noindent
+  % \patchcmd{<cmd>}{<search>}{<replace>}{<success>}{<failure>}
+  \patchcmd{\BODY}{\caption}{\captionof{figure}}{}{}% Replace \caption with \captionof{figure} inside \BODY
+  % Set "figure"
+  \begin{minipage}{\linewidth}
+    \BODY
+  \end{minipage}
+  %\par\vspace{\intextsep}% Assume in-text placement, so insert appropriate vertical spacing
+}
+
 \title{Homework 5}
 \author{Owen Sowatzke}
 \date{November 16, 2023}
@@ -36,6 +54,126 @@
 					\begin{equation*}
 						\Omega_c = \frac{\omega_c}{T_d} = \mathbf{0.4\pi} 
 					\end{equation*}
+					
+				\item Derive the transfer function $H_a(s)$ for the prototype analog filter by selecting the left-half-plane poles of $H_a(s)H_a(-s)$. Show your work. Show that this matched the result of the following MATLAB command:
+				
+				\texttt{[bs, as] = butter(N,$\Omega_c$,'low','s')}
+				
+				\begin{equation*}
+					H_a(s)H_a(-s) = \frac{(-1)^N{\Omega_c}^{2N}}{s^{2N} + (-1)^N{\Omega_c}^{2N}}
+				\end{equation*}
+				
+				\begin{equation*}
+					= \frac{(-1)^2(0.4\pi)^4}{s^4 + (-1)^4(0.4\pi)^4} = \frac{(0.4\pi)^4}{s^4 + (0.4\pi)^4}
+				\end{equation*}
+				
+				Solve for the poles of the above expression:
+				
+				$s^4 + (0.4\pi)^4 = 0$
+				
+				$\Rightarrow s^4 = -(0.4\pi)^4$
+				
+				$\Rightarrow s^4 = (0.4\pi)^4e^{j\pi}$
+				
+				$\Rightarrow s^4 = (0.4\pi)^4e^{j(\pi + 2{\pi}k)}\ \forall\ k \in \mathbb{Z}$
+				
+				$\Rightarrow s = 0.4{\pi}e^{j({\pi/4} + {\pi}k/2)}\ \forall\ k \in \mathbb{Z}$
+				
+				$\therefore$ $H_a(s)H_a(-s)$ has 4 unique poles:
+				
+				$s_1 = 0.4{\pi}e^{j{\pi}/4}$
+				
+				$s_2 = 0.4{\pi}e^{j3{\pi}/4}$
+				
+				$s_3 = 0.4{\pi}e^{-j3{\pi}/4}$
+				
+				$s_4 = 0.4{\pi}e^{-j{\pi}/4}$
+				
+				Because the filter is stable, the poles of $H_a(s)$ must be in the LHP.
+				
+				$\therefore$ $H_a(s)$ has two poles:
+				
+				$s_1 = 0.4{\pi}e^{j3{\pi}/4}$
+				
+				$s_2 = 0.4{\pi}e^{-j3{\pi}/4}$
+				
+				Now, we can rewrite $H_a(s)$ in the following form:
+				
+				\begin{equation*}
+					H_a(s) = \frac{(0.4\pi)^2}{(s - 0.4{\pi}e^{j3{\pi}/4})(s - 0.4{\pi}e^{-j3{\pi}/4})}
+				\end{equation*}
+				
+				\begin{equation*}
+					= \frac{(0.4\pi)^2}{s^2 - (0.4{\pi}e^{j3{\pi}/4} + 0.4{\pi}e^{-j3{\pi}/4})s + (0.4\pi)^2}
+				\end{equation*}
+				
+				\begin{equation*}
+					= \frac{(0.4\pi)^2}{s^2 - 0.8\pi\cos(3\pi/4)s + (0.4\pi)^2}
+				\end{equation*}
+				
+				\begin{equation*}
+					= \frac{1.5791}{s^2 + 1.7772s + 1.5791}
+				\end{equation*}
+				
+				\pagebreak
+				We can compare this transfer function to the output of the following MATLAB command:
+				
+				\begin{figure}[H]
+					\centerline{\fbox{\includegraphics[width=0.5\textwidth]{prob_1c.png}}}
+					\caption{Using MATLAB to Solve for $H_a(s)$}
+				\end{figure}
+				
+				
+				%Running:
+				
+				%\texttt{[bs, as] = butter(N,0.4*pi,'low','s')}
+				
+				%we get:
+				
+				%\texttt{bs = [0}
+				%After
+				
+				\item Derive the transfer function $H(z)$ for the desired digital filter. Also show the result of the following MATLAB command, which gives the coefficients for the final, simplified $H(z)$:
+				
+				\texttt{[bz, az] = impinvar(bs,as,$1/T_d$)}
+				
+				We first need to find $h_a(t)$ by taking an inverse Laplace transform of $H_a(s)$. We must first use partial fraction expansion to write $H_a(s)$ in the following form:
+				
+				\begin{equation*}
+					H_a(s) = \frac{A_1}{s - 0.4{\pi}e^{j3{\pi}/4}} +  \frac{A_2}{s - 0.4{\pi}e^{-j3{\pi}/4}}
+				\end{equation*}
+				
+				\begin{equation*}
+					A_1 = H_a(s)(s - 0.4{\pi}e^{j3{\pi}/4}) = \left.\frac{(0.4\pi)^2}{s - 0.4{\pi}e^{-j3{\pi}/4}}\right\vert_{s = 0.4{\pi}e^{j3{\pi}/4}}
+				\end{equation*}
+				
+				\begin{equation*}
+					= \frac{(0.4\pi)^2}{0.4{\pi}e^{j3{\pi}/4} - 0.4{\pi}e^{-j3{\pi}/4}} = \frac{(0.4\pi)^2}{j0.8{\pi}\sin(3\pi/4)}
+				\end{equation*}
+				
+				\begin{equation*}
+					 = \frac{(0.4\pi)}{j2(1/\sqrt{2})} = -\frac{j\pi\sqrt{2}}{5}
+				\end{equation*}
+				
+				\begin{equation*}
+					A_2 = H_a(s)(s - 0.4{\pi}e^{-j3{\pi}/4}) = \left.\frac{(0.4\pi)^2}{s - 0.4{\pi}e^{j3{\pi}/4}}\right\vert_{s = 0.4{\pi}e^{-j3{\pi}/4}}
+				\end{equation*}
+				
+				\begin{equation*}
+					= \frac{(0.4\pi)^2}{0.4{\pi}e^{-j3{\pi}/4} - 0.4{\pi}e^{j3{\pi}/4}} = \frac{(0.4\pi)^2}{-j0.8{\pi}\sin(3\pi/4)}
+				\end{equation*}
+				
+				\begin{equation*}
+					 = \frac{(0.4\pi)}{-j2(1/\sqrt{2})} = \frac{j\pi\sqrt{2}}{5}
+				\end{equation*}
+				
+				\begin{equation*}
+					H_a(s) = \frac{-j\pi\sqrt{2}}{5}\left(\frac{1}{s - 0.4{\pi}e^{j3\pi/4}}\right) + \frac{j\pi\sqrt{2}}{5}\left(\frac{1}{s - 0.4{\pi}e^{-j3\pi/4}}\right)
+				\end{equation*}
+				
+				\begin{equation*}
+					h_a(t) = \frac{-j\pi\sqrt{2}}{5}e^{0.4}
+				\end{equation*}
 			\end{enumerate}
 	\end{enumerate}
 \end{document}
