@@ -210,6 +210,15 @@
 				\begin{equation*}
 					\mathbf{= \frac{0.5673z^{-1}}{1 - 0.5186z^{-1} + 0.1691z^{-2}}}
 				\end{equation*}
+				
+				We can compare this transfer function to the output of the following MATLAB command, where \texttt{bs} and \texttt{as} are derived are derived using the MATLAB code given in part (c):
+				
+				\begin{figure}[H]
+					\centerline{\fbox{\includegraphics[width=0.5\textwidth]{prob_1d.png}}}
+					\caption{Using MATLAB to Solve for $H(z)$}
+				\end{figure}
+				
+				The transfer function $H(z)$ derived using MATLAB has numerator polynomial of $0z^{-2} + 0.5673z^{-1} + 0z^{-2} = 0.5673z^{-1}$ and a denominator polynomial of $1 - 0.5186z^{-1} + 0.1691z^{-2}$. Note that this is equivalent to the transfer function that was analytically derived.
 			\end{enumerate}
 	\end{enumerate}
 \end{document}
