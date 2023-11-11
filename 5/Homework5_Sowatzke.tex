@@ -219,6 +219,27 @@
 				\end{figure}
 				
 				The transfer function $H(z)$ derived using MATLAB has numerator polynomial of $0z^{-2} + 0.5673z^{-1} + 0z^{-2} = 0.5673z^{-1}$ and a denominator polynomial of $1 - 0.5186z^{-1} + 0.1691z^{-2}$. Note that this is equivalent to the transfer function that was analytically derived.
-			\end{enumerate}
+				
+			\item Derive the difference equation (LCCDE) that we would use to implement the filter.
+			
+				$Y(z)(1 - 0.5186z^{-1} + 0.1691z^{-2}) = X(z)(0.5673z^{-1})$
+				
+				$y[n] - 0.5186y[n-1] + 0.1691y[n-2] = 0.5673x[n-1]$
+				
+				$\mathbf{y[n] = 0.5186y[n-1] - 0.1691y[n-2] + 0.5673x[n-1]}$
+				
+			\item Plot the frequency response as follows:
+			
+				\texttt{[H,w] = freqz(bz,az)}
+				
+				\texttt{semilogy(w/pi,abs(H))}
+				
+				\begin{figure}[H]
+					\centerline{\fbox{\includegraphics[width=0.5\textwidth]{prob_1f.png}}}
+					\caption{Magnitude Frequency Response}
+				\end{figure}
+				
+			\item What is the approximate magnitude frequency response at zero frequency? How can we modify the filter to achieve unit magnitude frequency response at zero frequency? Optional can you determine a way to modify the filter that will achieve unit magnitude frequency response at zero frequency without affecting the frequency response at other frequencies?
+		\end{enumerate}
 	\end{enumerate}
 \end{document}
