@@ -383,5 +383,29 @@
 		\end{equation*}
 		
 		Use the window method to design a zero-phase FIR filter that approximates $H_d(e^{j\omega})$. Use a rectangular window of length 5. Show the transfer function $H(z)$ of the resulting filter. Evaluate the expressions to obtain the numerical values. Scale the filter so that the frequency response is one at $\omega = \pi$. Note that $H(e^{j\pi}) = \sum_{n}{h(n)e^{j{\pi}n}} = \sum_{n}{h(n)(-1)^n}$.
+		
+		\begin{equation*}
+			h_d[n] = \frac{1}{2\pi}\int_{-\pi}^{\pi}{H_d(e^{j\omega})e^{j{\omega}n}}d\omega
+		\end{equation*}
+		
+		\begin{equation*}
+			= \frac{1}{2\pi}\left(\int_{-\pi}^{-3\pi/4}{e^{j{\omega}n}d\omega} + \int_{3\pi/4}^{\pi}{e^{j{\omega}n}d\omega}\right)
+		\end{equation*}
+		
+		\begin{equation*}
+			= \frac{1}{2\pi}\left(\left.\frac{e^{j{\omega}n}}{jn}\right\vert_{-\pi}^{-3\pi/4} + \left.\frac{e^{j{\omega}n}}{jn}\right\vert_{3\pi/4}^{\pi}\right)
+		\end{equation*}
+		
+		\begin{equation*}
+			= \frac{1}{2\pi}\left(\frac{e^{-j3{\pi}n/4} - e^{-j{\pi}n}}{jn} + \frac{e^{j{\pi}n} - e^{j3{\pi}n/4}}{jn}\right)
+		\end{equation*}
+		
+		\begin{equation*}
+			= \frac{1}{{\pi}n}\left(\frac{e^{j{\pi}n} - e^{-j{\pi}n}}{j2} - \frac{e^{j3{\pi}n/4} - e^{-j3{\pi}n/4}}{j2}\right)
+		\end{equation*}
+		
+		\begin{equation*}
+			= \frac{\sin{({\pi}n)} - \sin{(3{\pi}n/4)}}{{\pi}n}
+		\end{equation*}
 	\end{enumerate}
 \end{document}
