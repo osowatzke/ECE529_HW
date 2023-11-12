@@ -275,6 +275,36 @@
 			\begin{equation*}
 				= \frac{0.7265^2}{s^2 + 0.7265\sqrt{2}s + 0.7265^2} = \mathbf{\frac{0.5278}{s^2 + 1.0274s + 0.5278}}
 			\end{equation*}
+			
+			\item Derive the transfer function $H(z)$ for the desired digital filter. Also show the result of the following MATLAB command, which gives the coefficients for the final $H(z)$:
+			
+			\texttt{[bz,az] = bilinear(bs,as,$1/T_d$)}
+			
+			$H_a(s)$ is mapped to $H(z)$ by the following substitution:
+			
+			\begin{equation*}
+				s = \frac{2}{T_d}\left(\frac{1 - z^{-1}}{1 + z^{-1}}\right) = \frac{1 - z^{-1}}{1 + z^{-1}}
+			\end{equation*}
+			
+			\begin{equation*}
+				H(z) = \frac{0.5278}{\left(\frac{1 - z^{-1}}{1 + z^{-1}}\right)^2 + 1.0274\left(\frac{1 - z^{-1}}{1 + z^{-1}}\right) + 0.5278}
+			\end{equation*}
+			
+			\begin{equation*}
+				= \frac{0.5278(1 + z^{-1})^2}{(1 - z^{-1})^2 + 1.0274(1 - z^{-1})(1 + z^{-1}) + 0.5278(1 + z^{-1})^2}
+			\end{equation*}
+			
+			\begin{equation*}
+				= \frac{0.5278(1 + 2z^{-1} + z^{-2})}{1 - 2z^{-1} + z^{-2} + 1.0274(1 - z^{-2}) + 0.5278(1 + 2z^{-1} + z^{-2})}
+			\end{equation*}
+			
+			\begin{equation*}
+				= \frac{0.5278 + 1.0556z^{-1} + 0.5278z^{-2}}{2.5552 - 0.9444z^{-1} + 0.5004z^{-2}}
+			\end{equation*}
+			
+			\begin{equation*}
+				\mathbf{= \frac{0.2066 + 0.4131^{-1} + 0.2066z^{-2}}{1 - 0.3696z^{-1} + 0.1958z^{-2}}}
+			\end{equation*}
 		\end{enumerate}
 	\end{enumerate}
 \end{document}
