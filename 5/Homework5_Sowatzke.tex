@@ -354,6 +354,11 @@
 			
 			The magnitude frequency response at zero frequency is $1$. The magnitude frequency response at $\omega = \pi$ is $-\infty$. The magnitude frequency response is $-\infty$ at $\omega=\pi$ because the bilinear transform maps the entire $j\Omega$-axis in the s-plane to one revolution of the unit circle in the z-plane. Compare this to the magnitude frequency response of the filter in Problem 1 which is approximately $0.3361$ at $\omega = \pi$. Compared to the bilinear transform, the impulse invariance method only maps a portion of the analog frequency response [-$\pi/T_d$, $\pi/T_d$) to a revolution of the unit circle in the z-plane. The rest of frequency response aliases.
 			
+			\item The \texttt{butter()} function can also be used to directly design a discrete-time filter using the bilinear transformation by omitting the final \texttt{'s'} parameter and specifying the cutoff frequency as a normalized digital frequency between 0 and 1:
+			
+			\texttt{[bz,az] = butter(N,$\omega_c$(normalized),'low')}
+			
+			Show that this produces the same result as in part (d).
 			%the magnitude frequency response at $\omega = \pi$ was approximately $0.3361$. 
 			
 			%This occurs because the filter designed with the bilinear transform maps the whole frequency axis  This occurs because the discrete time filter computed with the impulse invariance method is a sampled copy of the analog filter .  bilinear transformation 
