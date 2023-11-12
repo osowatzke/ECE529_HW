@@ -305,6 +305,13 @@
 			\begin{equation*}
 				\mathbf{= \frac{0.2066 + 0.4131^{-1} + 0.2066z^{-2}}{1 - 0.3696z^{-1} + 0.1958z^{-2}}}
 			\end{equation*}
+			
+			\begin{figure}[H]
+					\centerline{\fbox{\includegraphics[width=0.5\textwidth]{prob_3d.png}}}
+					\caption{Using MATLAB to Solve for $H(z)$}
+			\end{figure}
+			
+			The transfer function $H(z)$ derived using MATLAB has numerator polynomial of $0.2066z^{-2} + 0.4131z^{-1} + 0.2066z^{-2} = 0.5673z^{-1}$ and a denominator polynomial of $1 - 0.3695z^{-1} + 0.1958z^{-2}$. Note that this is approximately the same as the analytically-derived transfer function. Any differences in the transfer function are due to round-off errors in the analytic calculation.
 		\end{enumerate}
 	\end{enumerate}
 \end{document}
