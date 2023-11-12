@@ -338,6 +338,14 @@
 			\begin{equation*}
 				\mathbf{+ 0.2066x[n] + 0.4131x[n-1] + 0.2066x[n-2]}
 			\end{equation*}
+			
+			\item Plot the frequency response as follows:
+			
+			\texttt{[H,w] = freqz(bz,az)}
+			
+			\texttt{semilogy(w/pi,abs(H))}
+			
+			What is the approximate magnitude frequency response at zero frequency? How does the frequency response at $\omega = \pi$ compare with the corresponding frequency response observed in Problem 1?
 		\end{enumerate}
 	\end{enumerate}
 \end{document}
