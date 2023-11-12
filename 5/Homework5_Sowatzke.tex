@@ -259,6 +259,22 @@
 				\Omega_c = \frac{2}{T_d}\tan{\left(\frac{\omega_c}{2}\right)} = \tan{\left(\frac{0.4\pi}{2}\right)} = \tan{(0.2\pi)} = \mathbf{0.7265\ \text{\textbf{rad/s}}}
 			\end{equation*}
 			\item Show the transfer function $H_a(s)$ for the prototype analog filter.
+			
+			A second order butterworth filter with cutoff frequency $\Omega_c = 1\ \text{rad/s}$ has the following transfer function:
+			
+			\begin{equation*}
+				H(s) = \frac{1}{s^2 + \sqrt{2}s + 1}
+			\end{equation*}
+			
+			If we replace all instances of $s$ with $\frac{s}{\Omega_c}$, we can compute the transfer function $H_a(s)$
+			
+			\begin{equation*}
+				H_a(s) = \frac{1}{\left(\frac{s}{\Omega_c}\right)^2 + \sqrt{2}\left(\frac{s}{\Omega_c}\right) + 1} = \frac{\Omega_c^2}{s^2 + \Omega_c\sqrt{2}s + \Omega_c^2}
+			\end{equation*}
+			
+			\begin{equation*}
+				= \frac{0.7265^2}{s^2 + 0.7265\sqrt{2}s + 0.7265^2} = \mathbf{\frac{0.5278}{s^2 + 1.0274s + 0.5278}}
+			\end{equation*}
 		\end{enumerate}
 	\end{enumerate}
 \end{document}
