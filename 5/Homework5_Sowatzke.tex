@@ -311,7 +311,33 @@
 					\caption{Using MATLAB to Solve for $H(z)$}
 			\end{figure}
 			
-			The transfer function $H(z)$ derived using MATLAB has numerator polynomial of $0.2066z^{-2} + 0.4131z^{-1} + 0.2066z^{-2} = 0.5673z^{-1}$ and a denominator polynomial of $1 - 0.3695z^{-1} + 0.1958z^{-2}$. Note that this is approximately the same as the analytically-derived transfer function. Any differences in the transfer function are due to round-off errors in the analytic calculation.
+			The transfer function $H(z)$ derived using MATLAB has numerator polynomial of $0.2066 + 0.4131z^{-1} + 0.2066z^{-2}$ and a denominator polynomial of $1 - 0.3695z^{-1} + 0.1958z^{-2}$. Note that this is approximately the same as the analytically-derived transfer function. Any differences in the transfer function are due to round-off errors in the analytic calculation.
+			
+			\item Derive the difference equation (LCCDE) that we would use to implement the filter.
+			
+			\begin{equation*}
+				Y(z)(1 - 0.3696z^{-1} + 0.1958z^{-2})
+			\end{equation*}
+			
+			\begin{equation*}			
+				= X(z)(0.2066 + 0.4131z^{-1} + 0.2066z^{-2})
+			\end{equation*}
+			
+			\begin{equation*}
+				y[n] - 0.3696y[n-1] + 0.1958y[n-2]
+			\end{equation*}
+			
+			\begin{equation*}
+				 = 0.2066x[n] + 0.4131x[n-1] + 0.2066x[n-2]
+			\end{equation*}
+			
+			\begin{equation*}
+				\mathbf{y[n] = 0.3696y[n-1] - 0.1958y[n-2]}
+			\end{equation*}
+			
+			\begin{equation*}
+				\mathbf{+ 0.2066x[n] + 0.4131x[n-1] + 0.2066x[n-2]}
+			\end{equation*}
 		\end{enumerate}
 	\end{enumerate}
 \end{document}
