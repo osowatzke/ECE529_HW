@@ -375,7 +375,13 @@
 		\item An ideal discrete-time highpass filter with $\omega_c = 3\pi/4$ is given by
 		
 		\begin{equation*}
-			H_d(e^{j\omega}) = \left\{\begin{matrix}0, & |\omega| < 3\pi/4 \\ 1, & 3\pi/4 < |\omega| \leq \pi \end{matrix}\right.
+			H_d(e^{j\omega}) = 
+			\begin{cases}
+				0, & |\omega| < 3\pi/4 \\
+				1, & 3\pi/4 < |\omega| \leq \pi
+			\end{cases}
 		\end{equation*}
+		
+		Use the window method to design a zero-phase FIR filter that approximates $H_d(e^{j\omega})$. Use a rectangular window of length 5. Show the transfer function $H(z)$ of the resulting filter. Evaluate the expressions to obtain the numerical values. Scale the filter so that the frequency response is one at $\omega = \pi$. Note that $H(e^{j\pi}) = \sum_{n}{h(n)e^{j{\pi}n}} = \sum_{n}{h(n)(-1)^n}$.
 	\end{enumerate}
 \end{document}
