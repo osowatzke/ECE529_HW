@@ -249,5 +249,15 @@
 			Hint: This problem is trivial after you've completed the previous problem.
 		\pagebreak
 		\item Design a discrete-time second-order Butterworth lowpass filter with cutoff frequency equivalent to $f_c = 1.6\ \text{kHz}$. Assume the ADC sampling frequency is $f_s = 8 \text{kHz}$. Use the bilinear transformation methods with $T_d = 2$.
+		\begin{enumerate}
+			\item Calculate the cutoff frequency for the desired digital filter (i.e., convert the analog specs to digital specs.)
+			\begin{equation*}
+				\omega_c = \frac{2{\pi}f_c}{f_s} = \frac{2{\pi}(1.6\ \text{kHz})}{8\ \text{kHz}} = \mathbf{0.4\pi}
+			\end{equation*}
+			\item Calculate the cutoff frequency for the prototype analog filter.
+			\begin{equation*}
+				\Omega_c = \frac{\omega_c}{T_d} = \frac{0.4\pi}{2} = \mathbf{0.2\pi} 
+			\end{equation*}
+		\end{enumerate}
 	\end{enumerate}
 \end{document}
