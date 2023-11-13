@@ -529,5 +529,21 @@
 		\begin{equation*}
 			= \frac{\cos{({\pi}n)} - cos{(0.4{\pi}n)}}{{\pi}n}\quad \text{if}\ n \neq 0
 		\end{equation*}
+		
+		\begin{equation*}
+			h_d[0] = \frac{1}{2\pi}\int_{-\pi}^{\pi}{H_d(e^{j\omega})d\omega}			
+		\end{equation*}
+		
+		\begin{equation*}
+			= \frac{1}{2\pi}\left(\int_{-\pi}^{-0.4\pi}{-jd\omega} + \int_{0.4\pi}^{\pi}{jd\omega}\right)
+		\end{equation*}
+				
+		\begin{equation*}
+			= \frac{1}{2\pi}\left(\left.-j\omega\right\vert_{-\pi}^{-0.4\pi} + \left.j\omega\right\vert_{0.4\pi}^{\pi}\right)
+		\end{equation*}
+		
+		\begin{equation*}
+			= \frac{1}{2\pi}\left(j0.4\pi - j\pi + j\pi - j0.4\pi\right) = 0
+		\end{equation*}
 	\end{enumerate}
 \end{document}
