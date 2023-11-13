@@ -489,5 +489,45 @@
 		Take the z-transform to obtain $H(z)$
 		
 		$\mathbf{H(z) = 0.1562z^2 - 0.2210z + 0.2454 - 0.2210z^{-1} +  0.1562z^{-2}}$
+		
+		\pagebreak
+		\item Design an anti-symmetric FIR highpass filter with length $4$ and digital cutoff frequency $\omega_c = 0.4\pi$. Use a Hamming window. Show the transfer function $H(z)$ of the resulting filter. Evaluate the expressions to obtain the numerical values. Scale the filter so that the frequency response is one at $\omega = \pi$. Note that $H(e^{j\pi}) = \sum_{n}{h(n)e^{j{\pi}n}} = \sum_{n}{h(n)(-1)^n}$.
+		
+		Ideal frequency response:
+		
+		\begin{equation*}
+			H_d(e^{j\omega}) =
+			\begin{cases}
+				j, & 0.4\pi < \omega \leq \pi \\
+				0, & -0.4\pi \leq \omega \leq 0.4\pi \\
+				-j, & -\pi \leq \omega < -0.4\pi
+			\end{cases}
+		\end{equation*}
+		
+		Compute the ideal impulse response:
+		
+		\begin{equation*}
+			h_d[n] = \frac{1}{2\pi}\int_{-\pi}^{\pi}{H_d(e^{j\omega})e^{j{\omega}n}d\omega}			
+		\end{equation*}
+		
+		\begin{equation*}
+			= \frac{1}{2\pi}\left(\int_{-\pi}^{-0.4\pi}{-je^{j{\omega}n}d\omega} + \int_{0.4\pi}^{\pi}{je^{j{\omega}n}d\omega}\right)		
+		\end{equation*}
+		
+		\begin{equation*}
+			= \frac{1}{2\pi}\left(-\left.\frac{e^{j{\omega}n}}{n}\right\vert_{-\pi}^{-0.4\pi} + \left.\frac{e^{j{\omega}n}}{n}\right\vert_{0.4\pi}^{\pi}\right)		
+		\end{equation*}
+		
+		\begin{equation*}
+			= \frac{1}{2\pi}\left(-\frac{e^{-j0.4{\pi}n}}{n} + \frac{e^{-j{\pi}n}}{n} + \frac{e^{j{\pi}n}}{n} - \frac{e^{j0.4{\pi}n}}{n}\right)		
+		\end{equation*}
+		
+		\begin{equation*}
+			= \frac{1}{{\pi}n}\left(\frac{e^{j{\pi}n} + e^{-j{\pi}n}}{2} - \frac{e^{j0.4{\pi}n} + e^{-j0.4{\pi}n}}{2}\right)		
+		\end{equation*}
+		
+		\begin{equation*}
+			= \frac{\cos{({\pi}n)} - cos{(0.4{\pi}n)}}{{\pi}n}\quad \text{if}\ n \neq 0
+		\end{equation*}
 	\end{enumerate}
 \end{document}
