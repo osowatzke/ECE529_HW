@@ -384,6 +384,8 @@
 		
 		Use the window method to design a zero-phase FIR filter that approximates $H_d(e^{j\omega})$. Use a rectangular window of length 5. Show the transfer function $H(z)$ of the resulting filter. Evaluate the expressions to obtain the numerical values. Scale the filter so that the frequency response is one at $\omega = \pi$. Note that $H(e^{j\pi}) = \sum_{n}{h(n)e^{j{\pi}n}} = \sum_{n}{h(n)(-1)^n}$.
 		
+		Find the impulse response of the ideal highpass filter:
+		
 		\begin{equation*}
 			h_d[n] = \frac{1}{2\pi}\int_{-\pi}^{\pi}{H_d(e^{j\omega})e^{j{\omega}n}}d\omega
 		\end{equation*}
@@ -405,7 +407,61 @@
 		\end{equation*}
 		
 		\begin{equation*}
-			= \frac{\sin{({\pi}n)} - \sin{(3{\pi}n/4)}}{{\pi}n}
+			= \frac{\sin{({\pi}n)} - \sin{(3{\pi}n/4)}}{{\pi}n} \quad {\text{if}}\ n \neq 0
 		\end{equation*}
+		
+		\begin{equation*}
+			h_d[0] = \frac{1}{2\pi}\int_{-\pi}^{\pi}{H_d(e^{j\omega})d\omega}
+		\end{equation*}
+		
+		\begin{equation*}
+			= \frac{1}{2\pi}\left(\int_{-\pi}^{-3\pi/4}{d\omega} + \int_{3\pi/4}^{\pi}{d\omega}\right)
+		\end{equation*}
+		
+		\begin{equation*}
+			= \frac{1}{2\pi}\left(\left.\omega\right\vert_{-\pi}^{-3\pi/4} + \left.\omega\right\vert_{3\pi/4}^{\pi}\right)
+		\end{equation*}
+		
+		\begin{equation*}
+			= \frac{1}{2\pi}\left(-\frac{3\pi}{4} - (-\pi) + \pi - \frac{3\pi}{4}\right)
+		\end{equation*}
+		
+		\begin{equation*}
+			= \frac{1}{2\pi}\left(\frac{\pi}{2}\right) = \frac{1}{4}
+		\end{equation*}
+		
+		\begin{equation*}
+			h_d[n] =
+			\begin{cases}
+				\frac{\sin{({\pi}n)} - \sin{(3{\pi}n/4)}}{{\pi}n}, & n \neq 0 \\
+				\frac{1}{4}, & n = 0
+			\end{cases}
+		\end{equation*}
+		
+		The window function is defined by the following formula:
+		
+		$w[n] = u[n] - u[n - 5]$
+		
+		If the window function is centered about $n = 0$ and multiplied with $h_d[n]$, we can obtain the impulse response, $h[n]$.
+		
+		$h[n] = h_d[n]w[n + 2]$
+		
+		\begin{equation*}
+			h[n] =
+			\begin{cases}
+				0.25, & n = 0 \\
+				-0.2251, & |n| = 1 \\
+				0.1592, & |n| = 2\\
+				0, & \text{otherwise}
+			\end{cases}
+		\end{equation*}
+		
+		$h[n] = 0.1592\delta[n+2] - 0.2251\delta[n+1] + 0.25\delta[n]$
+		
+		$ - 0.2251\delta[n-1] +  0.1592\delta[n-2]$
+		
+		Determine scaling required to make $H(e^{j\pi}) = 1$:
+		
+		
 	\end{enumerate}
 \end{document}
