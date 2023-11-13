@@ -382,7 +382,7 @@
 			\end{cases}
 		\end{equation*}
 		
-		Use the window method to design a zero-phase FIR filter that approximates $H_d(e^{j\omega})$. Use a rectangular window of length 5. Show the transfer function $H(z)$ of the resulting filter. Evaluate the expressions to obtain the numerical values. Scale the filter so that the frequency response is one at $\omega = \pi$. Note that $H(e^{j\pi}) = \sum_{n}{h(n)e^{j{\pi}n}} = \sum_{n}{h(n)(-1)^n}$.
+		Use the window method to design a zero-phase FIR filter that approximates $H_d(e^{j\omega})$. Use a rectangular window of length 5. Show the transfer function $H(z)$ of the resulting filter. Evaluate the expressions to obtain the numerical values. Scale the filter so that the frequency response is one at $\omega = \pi$. Note that $H(e^{j\pi}) = \sum_{n}{h(n)e^{-j{\pi}n}} = \sum_{n}{h(n)(-1)^n}$.
 		
 		Find the impulse response of the ideal highpass filter:
 		
@@ -463,11 +463,11 @@
 		Determine scaling required to make $H(e^{j\pi}) = 1$:
 		
 		\begin{equation*}
-			H(e^{j\pi}) = \sum_{n=-\infty}^{\infty}{h[n]e^{j{\pi}n}} = \sum_{n=-\infty}^{\infty}{h[n](-1)^n}
+			H(e^{j\pi}) = \sum_{n=-\infty}^{\infty}{h[n]e^{-j{\pi}n}} = \sum_{n=-\infty}^{\infty}{h[n](-1)^n}
 		\end{equation*}
 		
 		\begin{equation*}
-			= 0.1592(-1)^{-2} - 0.2251(-1)^{-1} + 0.25(-1)^{0} - 0.2251\delta(-1)^{1} +  0.1592(-1)^{2}
+			= 0.1592(-1)^{-2} - 0.2251(-1)^{-1} + 0.25(-1)^{0} - 0.2251(-1)^{1} +  0.1592(-1)^{2}
 		\end{equation*}
 		
 		\begin{equation*}
@@ -486,12 +486,12 @@
 		
 		$- 0.2210\delta[n-1] +  0.1562\delta[n-2])$
 		
-		Take the z-transform to obtain $H(z)$
+		Take the z-transform to obtain $H(z)$:
 		
 		$\mathbf{H(z) = 0.1562z^2 - 0.2210z + 0.2454 - 0.2210z^{-1} +  0.1562z^{-2}}$
 		
 		\pagebreak
-		\item Design an anti-symmetric FIR highpass filter with length $4$ and digital cutoff frequency $\omega_c = 0.4\pi$. Use a Hamming window. Show the transfer function $H(z)$ of the resulting filter. Evaluate the expressions to obtain the numerical values. Scale the filter so that the frequency response is one at $\omega = \pi$. Note that $H(e^{j\pi}) = \sum_{n}{h(n)e^{j{\pi}n}} = \sum_{n}{h(n)(-1)^n}$.
+		\item Design an anti-symmetric FIR highpass filter with length $4$ and digital cutoff frequency $\omega_c = 0.4\pi$. Use a Hamming window. Show the transfer function $H(z)$ of the resulting filter. Evaluate the expressions to obtain the numerical values. Scale the filter so that the frequency response is one at $\omega = \pi$. Note that $H(e^{j\pi}) = \sum_{n}{h(n)e^{-j{\pi}n}} = \sum_{n}{h(n)(-1)^n}$.
 		
 		Ideal frequency response:
 		
@@ -581,6 +581,33 @@
 			
 		$h[n] = -0.0052\delta[n] + 0.3966\delta[n-1] - 0.3966\delta[n-2] + 0.0052\delta[n-3]$
 		
+		Determine scaling required to make $H(e^{j\pi}) = 1$:
 		
+		\begin{equation*}
+			H(e^{j\pi}) = \sum_{n=-\infty}^{\infty}{h[n]e^{-j{\pi}n}} = \sum_{n=-\infty}^{\infty}{h[n](-1)^n}
+		\end{equation*}
+		
+		\begin{equation*}
+			= -0.0052(-1)^{0} + 0.3966(-1)^{1} - 0.3966(-1)^{2} + 0.0052(-1)^{3}
+		\end{equation*}
+		
+		\begin{equation*}
+			= -0.0052 - 0.3966 - 0.3966 - 0.0052 = -0.8036
+		\end{equation*}
+		
+		Scale the coefficients by $-1/0.8036$ to make $H(e^{j\pi}) = 1$.
+		
+		\begin{equation*}
+			h[n] = -\frac{1}{0.8036}(-0.0052\delta[n] + 0.3966\delta[n-1]
+		\end{equation*}
+		
+		$ - 0.3966\delta[n-2] + 0.0052\delta[n-3])$
+		
+		$h[n] = 0.0065\delta[n] - 0.4935\delta[n-1] + 0.4935\delta[n-2] - 0.0065\delta[n-3]$
+		
+		\pagebreak
+		Take the z-transform to obtain $H(z)$:
+		
+		$\mathbf{H(z) = 0.0065 - 0.4935z^{-1} + 0.4935z^{-2} - 0.0065z^{-3}}$
 	\end{enumerate}
 \end{document}
