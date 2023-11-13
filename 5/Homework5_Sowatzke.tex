@@ -462,6 +462,32 @@
 		
 		Determine scaling required to make $H(e^{j\pi}) = 1$:
 		
+		\begin{equation*}
+			H(e^{j\pi}) = \sum_{n=-\infty}^{\infty}{h[n]e^{j{\pi}n}} = \sum_{n=-\infty}^{\infty}{h[n](-1)^n}
+		\end{equation*}
 		
+		\begin{equation*}
+			= 0.1592(-1)^{-2} - 0.2251(-1)^{-1} + 0.25(-1)^{0} - 0.2251\delta(-1)^{1} +  0.1592(-1)^{2}
+		\end{equation*}
+		
+		\begin{equation*}
+			= 0.1592 + 0.2251 + 0.25 + 0.2251 + 0.1592 = 1.0186
+		\end{equation*}
+		
+		Scale the coefficients by $1/1.0186$ to make $H(e^{j\pi}) = 1$.
+		
+		\begin{equation*}
+			h[n] = \frac{1}{1.0186}(0.1592\delta[n+2] - 0.2251\delta[n+1] + 0.25\delta[n]
+		\end{equation*}
+		
+		$- 0.2251\delta[n-1] +  0.1592\delta[n-2])$
+		
+		$\Rightarrow h[n] = 0.1562\delta[n+2] - 0.2210\delta[n+1] + 0.2454\delta[n]$
+		
+		$- 0.2210\delta[n-1] +  0.1562\delta[n-2])$
+		
+		Take the z-transform to obtain $H(z)$
+		
+		$\mathbf{H(z) = 0.1562z^2 - 0.2210z + 0.2454 - 0.2210z^{-1} +  0.1562z^{-2}}$
 	\end{enumerate}
 \end{document}
