@@ -545,5 +545,40 @@
 		\begin{equation*}
 			= \frac{1}{2\pi}\left(j0.4\pi - j\pi + j\pi - j0.4\pi\right) = 0
 		\end{equation*}
+		
+		\begin{equation*}
+			h_d[n] =
+			\begin{cases}
+				\frac{\cos{({\pi}n)} - cos{(0.4{\pi}n)}}{{\pi}n}, & n \neq 0 \\
+				0, & n = 0
+			\end{cases}
+		\end{equation*}
+		
+		The window function is defined by the following formula:
+		
+		\begin{equation*}
+			w[n] =
+			\begin{cases}
+				0.54 - 0.46\cos{\left(\frac{2{\pi}n}{N - 1}\right)}, & 0 \leq n \leq 3 \\
+				0, & \text{otherwise}
+			\end{cases}
+		\end{equation*}
+		
+		Because the filter length is even, we cannot design a zero-phase FIR filter. However, we can still design a causal FIR filter, by shifting the impulse response and multiplying it by the window.
+		
+		$h[n] = h_d[n - 1.5]w[n]$
+		
+		\begin{equation*}
+			h[n] =
+			\begin{cases}
+				-0.0052, & n = 0 \\
+				0.3966, & n = 1 \\
+				-0.3966, & n = 2 \\
+				0.0052, & n = 3\\
+				0, & \text{otherwise}
+			\end{cases}
+		\end{equation*}
+			
+		$h[n] = -0.0052\delta[n] + 0.3966\delta[n-1] - 0.3966\delta[n-2] + 0.0052\delta[n-3]$
 	\end{enumerate}
 \end{document}
