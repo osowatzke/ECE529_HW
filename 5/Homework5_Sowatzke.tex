@@ -247,10 +247,11 @@
 		\end{enumerate}
 		
 		\item Design a discrete-time second-order Butterworth lowpass filter with cutoff frequency $\omega_c = 0.4\pi\ \text{rad}$. Use the impulse invariance method.
-			Hint: This problem is trivial after you've completed the previous problem.
+		
+		Hint: This problem is trivial after you've completed the previous problem.
 			
 		\pagebreak
-		We designed a digital filter with a cutoff frequency of $\omega_c = 0.4\pi$ in problem 1. The value chosen for $T_d$ does not influence the results. $\therefore$ regardless of which value of $T_d$ is chosen, we will end up with the same digital filter designed in problem 1. Assuming the filter is scaled to produce \newline $H(e^{j\pi}) = 1$, the transfer function of the resulting filter will be
+		In problem 1, we used the impulse invariance method,to design a digital filter with a cutoff frequency of $\omega_c = 0.4\pi$. The value chosen for $T_d$ does not influence the results. $\therefore$ regardless of which value of $T_d$ is chosen, we will end up with the same digital filter designed in problem 1. Assuming the filter is scaled to produce \newline $H(e^{j\pi}) = 1$, the transfer function of the resulting filter will be
 		
 		\begin{equation*}
 			\mathbf{H(z) = \frac{0.6506z^{-1}}{1 - 0.51856z^{-1} + 0.1691z^{-2}}}
@@ -395,6 +396,22 @@
 		
 		Hint: This problem is trivial after you've completed the previous problem.
 		
+		In problem 3, we used the bilinear transform method, to design a digital filter with a cutoff frequency of $\omega_c = 0.4\pi$. The value chosen for $T_d$ does not influence the results. $\therefore$ regardless of which value of $T_d$ is chosen, we will end up with the same digital filter designed in problem 3. Assuming the filter is scaled to produce \newline $H(e^{j\pi}) = 1$, the transfer function of the resulting filter will be
+		
+		\begin{equation*}
+			\mathbf{H(z) = \frac{0.2066 + 0.4131^{-1} + 0.2066z^{-2}}{1 - 0.3696z^{-1} + 0.1958z^{-2}}}
+		\end{equation*}
+		
+		The resulting filter can also be implemented using the following LCCDE:
+		
+		\begin{equation*}
+			\mathbf{y[n] = 0.3696y[n-1] - 0.1958y[n-2]}
+		\end{equation*}
+			
+		\begin{equation*}
+			\mathbf{+ 0.2066x[n] + 0.4131x[n-1] + 0.2066x[n-2]}
+		\end{equation*}
+		
 		\item An ideal discrete-time highpass filter with $\omega_c = 3\pi/4$ is given by
 		
 		\begin{equation*}
@@ -513,7 +530,6 @@
 		
 		$\mathbf{H(z) = 0.1562z^2 - 0.2210z + 0.2454 - 0.2210z^{-1} +  0.1562z^{-2}}$
 		
-		\pagebreak
 		\item Design an anti-symmetric FIR highpass filter with length $4$ and digital cutoff frequency $\omega_c = 0.4\pi$. Use a Hamming window. Show the transfer function $H(z)$ of the resulting filter. Evaluate the expressions to obtain the numerical values. Scale the filter so that the frequency response is one at $\omega = \pi$. Note that $H(e^{j\pi}) = \sum_{n}{h(n)e^{-j{\pi}n}} = \sum_{n}{h(n)(-1)^n}$.
 		
 		Ideal frequency response:
@@ -628,7 +644,6 @@
 		
 		$h[n] = 0.0065\delta[n] - 0.4935\delta[n-1] + 0.4935\delta[n-2] - 0.0065\delta[n-3]$
 		
-		\pagebreak
 		Take the z-transform to obtain $H(z)$:
 		
 		$\mathbf{H(z) = 0.0065 - 0.4935z^{-1} + 0.4935z^{-2} - 0.0065z^{-3}}$
