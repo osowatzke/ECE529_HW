@@ -524,13 +524,13 @@
 		
 		$- 0.2251\delta[n-1] +  0.1592\delta[n-2])$
 		
-		$\Rightarrow h[n] = 0.1562\delta[n+2] - 0.2210\delta[n+1] + 0.2454\delta[n]$
+		$\Rightarrow h[n] = 0.1563\delta[n+2] - 0.2210\delta[n+1] + 0.2454\delta[n]$
 		
-		$- 0.2210\delta[n-1] +  0.1562\delta[n-2])$
+		$- 0.2210\delta[n-1] +  0.1563\delta[n-2]$
 		
 		Take the z-transform to obtain $H(z)$:
 		
-		$\mathbf{H(z) = 0.1562z^2 - 0.2210z + 0.2454 - 0.2210z^{-1} +  0.1562z^{-2}}$
+		$\mathbf{H(z) = 0.1563z^2 - 0.2210z + 0.2454 - 0.2210z^{-1} +  0.1563z^{-2}}$
 		
 		\item Design an anti-symmetric FIR highpass filter with length $4$ and digital cutoff frequency $\omega_c = 0.4\pi$. Use a Hamming window. Show the transfer function $H(z)$ of the resulting filter. Evaluate the expressions to obtain the numerical values. Scale the filter so that the frequency response is one at $\omega = \pi$. Note that $H(e^{j\pi}) = \sum_{n}{h(n)e^{-j{\pi}n}} = \sum_{n}{h(n)(-1)^n}$.
 		
