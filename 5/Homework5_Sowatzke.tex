@@ -243,9 +243,16 @@
 				
 			\item What is the approximate magnitude frequency response at zero frequency? How can we modify the filter to achieve unit magnitude frequency response at zero frequency? Optional can you determine a way to modify the filter that will achieve unit magnitude frequency response at zero frequency without affecting the frequency response at other frequencies?
 			
-				The magnitude frequency response at zero frequency is approximately $0.871994$. To achieve a unit magnitude frequency response at zero frequency we want to scale the transfer function by $1/0.871994 = 1.1468$. This is equivalent to scaling the numerator of the transfer function, \texttt{bz}, by $1.1468$. This modified filter can be implemented with the following LCCDE:
+				The magnitude frequency response at zero frequency is approximately $0.871994$. To achieve a unit magnitude frequency response at zero frequency we want to scale the transfer function by $1/0.871994 = 1.1468$. This is equivalent to scaling the numerator of the transfer function, \texttt{bz}, by $1.1468$. The transfer function of the scaled filter is shown below:
 				
-				$y[n] = 0.5186y[n-1] - 0.1691y[n-2] + 0.6506x[n-1]$
+				\begin{equation*}
+					\mathbf{H(z) = \frac{0.6506z^{-1}}{1 - 0.51856z^{-1} + 0.1691z^{-2}}}
+				\end{equation*}
+		
+				This modified filter can be implemented with the following LCCDE:
+				
+				$\mathbf{y[n] = 0.5186y[n-1] - 0.1691y[n-2] + 0.6506x[n-1]}$
+				
 		\end{enumerate}
 		
 		\item Design a discrete-time second-order Butterworth lowpass filter with cutoff frequency $\omega_c = 0.4\pi\ \text{rad}$. Use the impulse invariance method.
