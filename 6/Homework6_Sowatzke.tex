@@ -93,12 +93,14 @@
 			Note that the frequency response matches the ideal frequency response exactly at each of the frequencies samples we specified when defining $H(k)$.
 			
 			\item Rearrange the elements of \texttt{h} to obtain a causal, symmetric impulse response, \texttt{hc}. Plot the result. For example, in MATLAB do \texttt{stem(hc)}. What is the final length of this filter?
-		\end{enumerate}
-		
+			
 			\begin{figure}[H]
 				\centerline{\fbox{\includegraphics[width=0.5\textwidth]{prob1d_causal_impulse_response.png}}}
 				\caption{Causal Impulse Response $hc[n]$}
 			\end{figure}
+			
+			The final length of the symmetric causal filter is 17. The first and last samples are $h[8]/2$. When the filter is turned in a discrete Fourier series with period 16. The first and last samples of the causal filter add together to produce the correct starting sample. 
+		\end{enumerate}
 	\end{enumerate}
 	
 	

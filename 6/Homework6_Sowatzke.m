@@ -63,6 +63,9 @@ title('DFT of h[n]');
 %% Problem 1d)
 % Create causal impulse response hc
 hc = fftshift(h);
+hc(1) = hc(1)/2;
+hc = [hc; hc(1)];
+n = 0:(length(hc)-1);
 
 % Plot the causal impulse response
 stem(n, hc);
