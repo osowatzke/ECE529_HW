@@ -59,3 +59,13 @@ stem(abs(H));
 xlabel('k');
 ylabel('H(k)');
 title('DFT of h[n]');
+
+%% Problem 1d)
+% Create causal impulse response hc
+hc = fftshift(h);
+
+% Plot the causal impulse response
+stem(n, hc);
+xlabel('n');
+ylabel('hc[n]')
+title('Plot of the Causal Impulse Response hc[n]');
