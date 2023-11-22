@@ -119,3 +119,25 @@ xlabel('Normalized Frequency (\times \pi rad/sample');
 ylabel('Magnitude');
 title('Comparison of Hc(e^{j\omega}) to H(k)')
 legend('Hc(e^{j\omega})','H(k)');
+
+%% Problem 1d)
+
+% Compute the frequency response of the casual filter
+[Hc,w] = freqz(hc,1,512);
+
+% Plot the frequency response
+figure(7)
+clf;
+semilogy(w/pi,abs(Hc),'LineWidth',1.5);
+
+% Set limits for Y axis
+ylim([0.001 2]);
+
+% Label plot
+xlabel('Normalized Frequency (\times \pi rad/sample)')
+ylabel('Magnitude');
+title('Magnitude Frequency Response')
+
+% Turn on grid
+grid on;
+

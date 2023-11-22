@@ -168,6 +168,25 @@
 			\end{figure}
 			
 			Comparing, Figure \ref{freq_response_halved_endpoints} to Figure \ref{freq_response_raw_endpoints}, it is clear that halving the endpoints preserves the magnitude of the frequency response samples $H[k]$, while selecting the raw endpoints does not. Therefore, we have chosen the best option for the causal, symmetric impulse response $h_c[n]$.
+			
+			\item Using 512 samples over $0 \leq \omega < 2\pi$, plot the frequency response as a semilog plot. For example, in MATLAB do
+			
+			\texttt{[Hc,w] = freqz(hc,1,512);}
+			
+			\texttt{semilogy(w/pi,abs(Hc)}
+			
+			\texttt{axis([0 1 0.01 2]) \% lower limit 0.001 would be better}
+			
+			\texttt{grid on}
+			
+			Discuss how this plot differs the plot shown in (c).
+			
+			\begin{figure}[H]
+				\centerline{\fbox{\includegraphics[width=0.5\textwidth]{prob1e_frequency_response.png}}}
+				\caption{Magnitude Frequency Response.}
+			\end{figure}
+			
+			Comparing the above figure to the plot shown in (c), we notice that it contains additional frequency response samples between those shown in part (c). Notice that the frequency response is not constant between the samples given in part (c). We see significant ripple in the stopband.
 		\end{enumerate}
 	\end{enumerate}
 	
