@@ -141,3 +141,26 @@ title('Magnitude Frequency Response')
 % Turn on grid
 grid on;
 
+%% Problem 1e)
+
+% Multiply the impulse response by a Hamming window
+hc = hc.*hamming(length(hc));
+
+% Compute the frequency response
+[Hc,w] = freqz(hc,1,512);
+
+% Plot the frequency response
+figure(7)
+clf;
+semilogy(w/pi,abs(Hc),'LineWidth',1.5);
+
+% Set limits for Y axis
+ylim([0.001 2]);
+
+% Label plot
+xlabel('Normalized Frequency (\times \pi rad/sample)')
+ylabel('Magnitude');
+title('Magnitude Frequency Response')
+
+% Turn on grid
+grid on;

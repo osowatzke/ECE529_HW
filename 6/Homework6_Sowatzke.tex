@@ -190,6 +190,13 @@
 			
 			\item Multiply the impulse response \texttt{hc} by a Hamming window. Then repeat (d). How do the plots differ?
 			
+			\begin{figure}[H]
+				\centerline{\fbox{\includegraphics[width=0.5\textwidth]{prob1f_frequency_response.png}}}
+				\caption{Magnitude Frequency Response.}
+			\end{figure}
+			
+			The frequency response above has much lower sidelobes than the figure shown in part (d). However, the reduced sidelobes are not free. The frequency response shown above has a much more gradual transition between than passband and stopband than the frequency response shown in (d).
+			
 			\item Review the documentation for the MATLAB \texttt{fir2} function. Design an FIR LPF using the \texttt{fir2} function with length 17. Compare to the result in (f).
 		\end{enumerate}
 	\end{enumerate}
