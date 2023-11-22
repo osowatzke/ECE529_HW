@@ -94,12 +94,84 @@
 			
 			\item Rearrange the elements of \texttt{h} to obtain a causal, symmetric impulse response, \texttt{hc}. Plot the result. For example, in MATLAB do \texttt{stem(hc)}. What is the final length of this filter?
 			
+			The output of the inverse DFT, \texttt{h}, is one period of the Discrete Fourier Series. The causal, symmetric impulse response will be the Discrete Fourier Series from $n=-\frac{N}{2}$ to $n=\frac{N}{2}$ with the samples at $n=-\frac{N}{2}$ and $n=\frac{N}{2}$ halved. Note that halving the endpoints is necessary if we want to prevent magnitude distortion of \texttt{H(k)}.
+			 
+			\pagebreak
+			Consider circular shifting the array of samples, \texttt{h}, by $N/2$. The circular shift should not distort the magnitude of the DFT samples.
+			
+			\begin{equation*}
+				h_s[n] = h[(n - N/2)\ \text{mod}\ N] \leftrightarrow H[k]e^{\frac{-j{2\pi}(N/2)k}{N}}
+			\end{equation*}
+			
+			If we take a 2N-point DFT of $h_c[n]$, the frequency response samples that we want to match to $H[k]$ are:
+			 
+			\begin{equation*}
+				H_c[2k] = \sum_{n=0}^{2N-1}{h_c[n]e^{-\frac{j2{\pi}n(2k)}{2N}}} = \sum_{n=0}^{2N-1}{h_c[n]e^{-\frac{j2{\pi}nk}{N}}}
+			\end{equation*}
+			
+			\begin{equation*}
+				= \sum_{n=0}^{N-1}{h_c[n]e^{\frac{-j2{\pi}nk}{N}}} + \sum_{n=N}^{2N-1}{h_c[n]e^{\frac{-j2{\pi}nk}{N}}}
+			\end{equation*}
+			
+			\begin{equation*}
+				 = \sum_{n=0}^{N-1}{h_c[n]e^{\frac{-j2{\pi}nk}{N}}} + \sum_{n=0}^{N-1}{h_c[n+N]e^{-\frac{j2{\pi}(n+N)k}{N}}}
+			\end{equation*}
+			
+			\begin{equation*}
+				 = \sum_{n=0}^{N-1}{h_c[n]e^{-\frac{j2{\pi}nk}{N}}} + \sum_{n=0}^{N-1}{h_c[n+N]e^{-\frac{j2{\pi}nk}{N}}}
+			\end{equation*}
+			
+			\begin{equation*}
+				 = \sum_{n=0}^{N-1}{(h_c[n] + h_c[n+N])e^{\frac{-j2{\pi}nk}{N}}}
+			\end{equation*}
+			
+			Compare this to the N-point DFT of $h_s[n]$:
+			
+			\begin{equation*}
+				H_s[k] = \sum_{n=0}^{N-1}{h_s[n]e^{\frac{-j2{\pi}nk}{N}}}
+			\end{equation*}
+			
+			We can preserve the $H_s[k]$ samples (or the magnitude of the $H[k]$ samples) if we set:
+			
+			$h_c[n] + h_c[n+N] = h_s[k]$
+			
+			One way to do this which provides a causal filter is to let
+			
+			\begin{equation*}
+				h_c[n] = \begin{cases}
+					h_s[0]/2 & n = 0\\
+					h_s[n]   & 0 < n < N\\
+					h_s[0]/2 & n = N\\
+					0		 & \text{otherwise}
+				\end{cases}
+			\end{equation*}
+			
 			\begin{figure}[H]
 				\centerline{\fbox{\includegraphics[width=0.5\textwidth]{prob1d_causal_impulse_response.png}}}
 				\caption{Causal Impulse Response $hc[n]$}
 			\end{figure}
 			
-			The final length of the symmetric causal filter is 17. The first and last samples are $h[8]/2$. When the filter is turned in a discrete Fourier series with period 16, the first and last samples of the causal filter add together to produce the expected DFT input. 
+			The final length of the symmetric causal filter is 17. The first and last samples are $h[8]/2$. When the filter is turned in a discrete Fourier series with period 16, the first and last samples of the causal filter add together to produce the expected DFT input.
+			
+			\begin{equation*}
+				X[k] = \sum_{n=0}^{N-1}{(x[n] + x[n + N])e^{-j2{\pi}nk/N}}
+			\end{equation*}
+			
+			\begin{equation*}
+				X[k] = \sum_{n=0}^{N-1}{x[n]e^{-j2{\pi}nk/N}} + \sum_{n=0}^{N-1}{x[n + N]e^{-j2{\pi}nk/N}}
+			\end{equation*}
+			
+			\begin{equation*}
+				X[k] = \sum_{n=0}^{N-1}{x[n]e^{-j2{\pi}nk/N}} + \sum_{n=N}^{2N-1}{x[n]e^{-j2{\pi}nk/N}}
+			\end{equation*}
+			
+			\begin{equation*}
+				X[k] = \sum_{n=0}^{2N-1}{x[n]e^{-j2{\pi}nk/N}}
+			\end{equation*}
+			
+			\begin{equation*}
+				X[k] = \sum_{n=0}^{2N-1}{x[n]e^{-j2{\pi}n(2k)/(2N)}}
+			\end{equation*}
 		\end{enumerate}
 	\end{enumerate}
 	
