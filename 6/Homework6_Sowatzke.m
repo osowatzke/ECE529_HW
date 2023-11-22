@@ -51,6 +51,7 @@ h = real(h);
 
 % Plot the resulting impulse response
 figure(2);
+clf;
 n = 0:(N-1);
 stem(n,h,'LineWidth',1.5);
 grid on;
@@ -59,8 +60,12 @@ ylabel('h(n)');
 title('Inverse DFT of H(k)')
 
 %% Problem 1c)
-% Compute the frequency response corresponding to the filter h
+% Compute the DFT samples corresponding to the filter h
 H = fft(h);
+
+% Plot the DFT samples
+figure(3)
+clf;
 stem(k,abs(H),'LineWidth',1.5);
 grid on;
 xlabel('k');
@@ -70,23 +75,47 @@ title('DFT of h[n]');
 %% Problem 1d)
 % Create causal impulse response hc
 hc = fftshift(h);
-% hc(1) = hc(1)/2;
+hc(1) = hc(1)/2;
 hc = [hc; hc(1)];
 n = 0:(length(hc)-1);
 
 % Plot the causal impulse response
+figure(4);
+clf;
 stem(n, hc, 'Linewidth', 1.5);
 xlabel('n');
 ylabel('hc[n]')
 title('Causal Impulse Response hc[n]');
 grid on;
 
-figure
-plot((0:511)/512,abs(fft(hc,512)),'LineWidth',1.5);
+% Compare the resulting frequency response to the original H(k) samples
+Hc = fft(hc,512);
+f = 2*(0:511)/512;
+figure(5)
+clf;
+plot(f,abs(Hc),'LineWidth',1.5);
 hold on;
-stem((0:15)/16,abs(H),'LineWidth',1.5)
+f = 2*(0:15)/16;
+stem(f,abs(H),'LineWidth',1.5)
 grid on;
 xlabel('Normalized Frequency (\times \pi rad/sample');
 ylabel('Magnitude');
 title('Comparison of Hc(e^{j\omega}) to H(k)')
-legend('Hc(e^{j\omega})','H(k)')
+legend('Hc(e^{j\omega})','H(k)');
+
+% Now compare the frequency response to the original H(k) samples if we
+% simply duplicated the last sample
+hc2 = [2*hc(1); hc(2:(end-1)); 2*hc(end)];
+Hc2 = fft(hc2,512);
+f = 2*(0:511)/512;
+figure(6)
+clf;
+plot(f,abs(Hc2),'LineWidth',1.5);
+hold on;
+f = 2*(0:15)/16;
+stem(f,abs(H),'LineWidth',1.5)
+grid on;
+xlabel('Normalized Frequency (\times \pi rad/sample');
+ylabel('Magnitude');
+title('Comparison of Hc(e^{j\omega}) to H(k)')
+legend('Hc(e^{j\omega})','H(k)');

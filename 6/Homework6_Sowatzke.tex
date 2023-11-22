@@ -146,32 +146,28 @@
 				\end{cases}
 			\end{equation*}
 			
+			The impulse response, $h_c[n]$, created according to the above formula is shown below:
+			
 			\begin{figure}[H]
 				\centerline{\fbox{\includegraphics[width=0.5\textwidth]{prob1d_causal_impulse_response.png}}}
 				\caption{Causal Impulse Response $hc[n]$}
 			\end{figure}
 			
-			The final length of the symmetric causal filter is 17. The first and last samples are $h[8]/2$. When the filter is turned in a discrete Fourier series with period 16, the first and last samples of the causal filter add together to produce the expected DFT input.
+			To further emphasize our selection of the causal impulse response, $h_c[n]$, we can compare $|H[k]|$ to $|H_c(e^{j\omega})|$ when the endpoints are halved and when the endpoints are not halved.
 			
-			\begin{equation*}
-				X[k] = \sum_{n=0}^{N-1}{(x[n] + x[n + N])e^{-j2{\pi}nk/N}}
-			\end{equation*}
+			\begin{figure}[H]
+				\centerline{\fbox{\includegraphics[width=0.5\textwidth]{prob1d_frequency_response1.png}}}
+				\caption{\doublespacing Comparison of $|H(k)|$ to $|H_c(e^{j\omega})|$ when Endpoints are Halved.}
+				\label{freq_response_halved_endpoints}
+			\end{figure}
 			
-			\begin{equation*}
-				X[k] = \sum_{n=0}^{N-1}{x[n]e^{-j2{\pi}nk/N}} + \sum_{n=0}^{N-1}{x[n + N]e^{-j2{\pi}nk/N}}
-			\end{equation*}
+			\begin{figure}[H]
+				\centerline{\fbox{\includegraphics[width=0.5\textwidth]{prob1d_frequency_response2.png}}}
+				\caption{\doublespacing Comparison of $|H(k)|$ to $|H_c(e^{j\omega})|$ when Endpoints are Not Halved.}
+				\label{freq_response_raw_endpoints}
+			\end{figure}
 			
-			\begin{equation*}
-				X[k] = \sum_{n=0}^{N-1}{x[n]e^{-j2{\pi}nk/N}} + \sum_{n=N}^{2N-1}{x[n]e^{-j2{\pi}nk/N}}
-			\end{equation*}
-			
-			\begin{equation*}
-				X[k] = \sum_{n=0}^{2N-1}{x[n]e^{-j2{\pi}nk/N}}
-			\end{equation*}
-			
-			\begin{equation*}
-				X[k] = \sum_{n=0}^{2N-1}{x[n]e^{-j2{\pi}n(2k)/(2N)}}
-			\end{equation*}
+			Comparing, Figure \ref{freq_response_halved_endpoints} to Figure \ref{freq_response_raw_endpoints}, it is clear that halving the endpoints preserves the magnitude of the frequency response samples $H[k]$, while selecting the raw endpoints does not. Therefore, we have chosen the best option for the causal, symmetric impulse response $h_c[n]$.
 		\end{enumerate}
 	\end{enumerate}
 	
