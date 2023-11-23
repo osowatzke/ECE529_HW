@@ -170,15 +170,66 @@ grid on;
 % Apply hamming window to impulse response
 hc = hc.*hamming(length(hc));
 
+% Compute the updated frequency response
+[Hc,w] = freqz(hc,1,512);
+
 % Plot the frequency response
 figure(8)
 clf;
 semilogy(w/pi,abs(Hc),'LineWidth',1.5);
 
 % Set limits for Y axis
-ylim([0.001 2]);
+ylim([1e-4 2]);
 
 % Label plot
 xlabel('Normalized Frequency (\times \pi rad/sample)')
 ylabel('Magnitude');
 title('Magnitude Frequency Response')
+
+% Turn on grid
+grid on;
+
+%% Problem 1g)
+
+% Design 17 tap filter with fir2 command
+%
+% Note that the FIR2 function will force the size of the DFT to be a
+% power of 2 that is equal to or larger than the filter length. Because
+% the filter length is 17, it will use a DFT size of 32 samples.
+%
+% Because the DFT size is different, the filter designed with the fir2
+% command will not be exactly the same as the analytically derived filter.
+%
+h = fir2(16,0:0.125:1,[1 1 1 1 sqrt(2)/2 0 0 0 0],9,0);
+
+% Overlay the impulse response of the causal, symmetric filter and the
+% result of the fir2 command
+figure(9);
+clf;
+n = 0:(length(h)-1);
+stem(n,hc,'LineWidth',1.5);
+hold on;
+stem(n,h,'LineWidth',1.5);
+grid on;
+legend('hc[n]','hm[n]');
+xlabel('n');
+ylabel('Value');
+title('Impulse Response Comparison')
+
+% Plot the frequency response of both filters for comparison
+figure(10);
+clf;
+[Hc,~] = freqz(hc,1,512);
+[H,w] = freqz(h,1,512);
+semilogy(w/pi,abs(Hc),'LineWidth',1.5);
+hold on;
+semilogy(w/pi,abs(H),'LineWidth',1.5);
+ylim([1e-4 2]);
+grid on;
+xlabel('Normalized Frequency (/times /pi rad/sample)')
+ylabel('Magnitude');
+title('Magnitude Frequency Response Comparison')
+legend('Hc(e^{j\omega})','Hm(e^{j\omega})')
+
+
+
