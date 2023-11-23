@@ -223,7 +223,7 @@
 		\end{enumerate}
 		
 		\item Review the documentation for the MATLAB 
-		\texttt{firpm} function. Design an FIR LPF with length 17, passband cutoff frequency $\omega = 0.37\pi$, and stopband cutoff frequency $\omega = 0.71\pi$ using the \texttt{firpm} function. Compare to the result in Problem 1.
+		\texttt{firpm} function. Design an FIR LPF with length 17, passband cutoff frequency $\omega = 0.37\pi$, and stopband cutoff frequency $\omega = 0.71\pi$ using the \texttt{firpm} function. Compare to the result in Problem 1(g).
 		
 		\pagebreak
 		The FIR filter with be designed with the \texttt{firpm} function as follows:
@@ -236,5 +236,7 @@
 			\centerline{\fbox{\includegraphics[width=0.5\textwidth]{prob2_magnitude_freq_response.png}}}
 			\caption{Magnitude Frequency Response.}
 		\end{figure}
+		
+		Compared to the filter designed in Problem 1(g), the filter designed with the \texttt{firpm} method, has slightly higher sidelobes and a slightly steeper transition between the stopband and passband. The filter designed with the \texttt{firpm} method is also equiripple.
 	\end{enumerate}	
 \end{document}
