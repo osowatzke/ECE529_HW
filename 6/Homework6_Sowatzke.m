@@ -231,5 +231,19 @@ ylabel('Magnitude');
 title('Magnitude Frequency Response Comparison')
 legend('Hc(e^{j\omega})','Hm(e^{j\omega})')
 
+%% Problem 2
+
+% Design FIR filter with the firpm function
+h = firpm(16,[0 0.37 0.71 1],[1 1 0 0]);
+
+% Plot the frequency response of the resulting filter
+figure(11);
+clf;
+[H,w] = freqz(h,1,512);
+semilogy(w/pi,abs(H),'LineWidth',1.5);
+grid on;
+xlabel('Normalized Frequency (/times /pi rad/sample)')
+ylabel('Magnitude');
+title('Magntiude Frequency Response');
 
 

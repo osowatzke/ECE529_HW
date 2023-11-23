@@ -220,13 +220,21 @@
 			\end{figure}
 			
 			Note that there are some differences in both the impulse response and frequency response. These differences arise from differences in the ideal frequency response samples. Our analytic derivation had 16 frequency response samples, while the \texttt{fir2} command used 32 frequency response samples.
-			
-			% If the size of the frequency response is larger than the number of specified samples, the input frequency response samples are linearly interpolated. 
-			
-			
 		\end{enumerate}
-	\end{enumerate}
-	
-	
-	
+		
+		\item Review the documentation for the MATLAB 
+		\texttt{firpm} function. Design an FIR LPF with length 17, passband cutoff frequency $\omega = 0.37\pi$, and stopband cutoff frequency $\omega = 0.71\pi$ using the \texttt{firpm} function. Compare to the result in Problem 1.
+		
+		\pagebreak
+		The FIR filter with be designed with the \texttt{firpm} function as follows:
+		
+		\texttt{h = firpm(16, [0 0.37 0.71 1], [1 1 0 0]);}
+		
+		The frequency response of the resulting filter is shown below:
+		
+		\begin{figure}[H]
+			\centerline{\fbox{\includegraphics[width=0.5\textwidth]{prob2_magnitude_freq_response.png}}}
+			\caption{Magnitude Frequency Response.}
+		\end{figure}
+	\end{enumerate}	
 \end{document}
