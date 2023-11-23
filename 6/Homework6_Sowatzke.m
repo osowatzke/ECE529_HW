@@ -200,7 +200,7 @@ grid on;
 % Because the DFT size is different, the filter designed with the fir2
 % command will not be exactly the same as the analytically derived filter.
 %
-h = fir2(16,0:0.125:1,[1 1 1 1 sqrt(2)/2 0 0 0 0],9,0);
+h = fir2(16,0:0.125:1,[1 1 1 1 sqrt(2)/2 0 0 0 0],16,0);
 
 % Overlay the impulse response of the causal, symmetric filter and the
 % result of the fir2 command

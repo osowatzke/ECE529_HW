@@ -198,6 +198,30 @@
 			The frequency response above has much lower sidelobes than the figure shown in part (d). However, the reduced sidelobes are not free. The frequency response shown above has a much more gradual transition between than passband and stopband than the frequency response shown in (d).
 			
 			\item Review the documentation for the MATLAB \texttt{fir2} function. Design an FIR LPF using the \texttt{fir2} function with length 17. Compare to the result in (f).
+			
+			Similar to how we designed our FIR filter, the \texttt{fir2} command takes samples of the frequency response as an input. If we provide the \texttt{fir2} function with the same frequency response samples that we used to analytically derive the impulse response, we should obtain a similar result. Note that the \texttt{fir2} command also accepts an \texttt{npt} parameter, which specifies the number of frequency samples on one side of the frequency response. This number must be greater than half the filter order. The \texttt{fir2} command internally constrains the \texttt{npt} parameter to a power of 2. If \texttt{npt} is not input as power of 2, the next power of 2 is chosen. Note that the IFFT size will be twice the \texttt{npt} parameter. To use an IFFT size that is closest to the analytic derivation, we set \texttt{npt = 16}, which results in an IFFT size of 32.
+			
+			The resulting command is shown below:
+			
+			\texttt{h = fir2(16,0:0.125:1,[1 1 1 1 sqrt(2)/2 0 0 0 0],16,0);}
+			
+			We can compare the \texttt{fir2} output to the impulse response we analytically derived. In the plot shown below, the impulse response output by the \texttt{fir2} command is denoted as \texttt{hm[n]}.
+			
+			\begin{figure}[H]
+				\centerline{\fbox{\includegraphics[width=0.5\textwidth]{prob1g_impulse_response_comparison.png}}}
+				\caption{Impulse Response Comparison.}
+			\end{figure}
+			
+			We can also compare the magnitude frequency response of both filters.
+			
+			\begin{figure}[H]
+				\centerline{\fbox{\includegraphics[width=0.5\textwidth]{prob1g_frequency_response_comparison.png}}}
+				\caption{Frequency Response Comparison}
+			\end{figure}
+			
+			% If the size of the frequency response is larger than the number of specified samples, the input frequency response samples are linearly interpolated. 
+			
+			
 		\end{enumerate}
 	\end{enumerate}
 	
