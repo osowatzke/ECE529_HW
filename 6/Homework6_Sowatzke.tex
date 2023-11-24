@@ -49,7 +49,7 @@
 		\begin{equationCenter}
 			H(e^{j\omega}) = \begin{cases}
 				1 & \text{for}\ |\omega| < \omega_c\\
-				0 & \text{for}\ 0 \leq |\omega| \leq \pi
+				0 & \text{for}\ \omega_c \leq |\omega| \leq \pi
 			\end{cases}
 		\end{equationCenter}
 		
@@ -92,7 +92,7 @@
 			
 			Note that the frequency response matches the ideal frequency response exactly at each of the frequencies samples we specified when defining $H(k)$.
 			
-			\item Rearrange the elements of \texttt{h} to obtain a causal, symmetric impulse response, \texttt{hc}. Plot the result. For example, in MATLAB do \texttt{stem(hc)}. What is the final length of this filter?
+			\item Rearrange the elements of \texttt{h} to obtain a causal, symmetric (i.e., symmetric around the midpoint of the array) impulse response, \texttt{hc}. You'll need to copy the sample at one endpoint of the array to form the sample at the other endpoint of the array. Plot the result. For example, in MATLAB do \texttt{stem(hc)}. What is the final length of this filter?
 			
 			The output of the inverse DFT, \texttt{h}, is one period of the Discrete Fourier Series. The causal, symmetric impulse response will be the Discrete Fourier Series from $n=-\frac{N}{2}$ to $n=\frac{N}{2}$ with the samples at $n=-\frac{N}{2}$ and $n=\frac{N}{2}$ halved. Note that halving the endpoints is necessary if we want to prevent magnitude distortion of \texttt{H(k)}.
 			 

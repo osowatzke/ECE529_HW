@@ -120,8 +120,7 @@ ylabel('Magnitude');
 title('Comparison of Hc(e^{j\omega}) to H(k)')
 legend('Hc(e^{j\omega})','H(k)');
 
-%% Problem 1d)
-
+%% Problem 1e)
 % Compute the frequency response of the casual filter
 [Hc,w] = freqz(hc,1,512);
 
@@ -141,8 +140,7 @@ title('Magnitude Frequency Response')
 % Turn on grid
 grid on;
 
-%% Problem 1e)
-
+%% Problem 1f)
 % Multiply the impulse response by a Hamming window
 hc = hc.*hamming(length(hc));
 
@@ -151,30 +149,6 @@ hc = hc.*hamming(length(hc));
 
 % Plot the frequency response
 figure(7)
-clf;
-semilogy(w/pi,abs(Hc),'LineWidth',1.5);
-
-% Set limits for Y axis
-ylim([0.001 2]);
-
-% Label plot
-xlabel('Normalized Frequency (\times \pi rad/sample)')
-ylabel('Magnitude');
-title('Magnitude Frequency Response')
-
-% Turn on grid
-grid on;
-
-%% Problem 1f)
-
-% Apply hamming window to impulse response
-hc = hc.*hamming(length(hc));
-
-% Compute the updated frequency response
-[Hc,w] = freqz(hc,1,512);
-
-% Plot the frequency response
-figure(8)
 clf;
 semilogy(w/pi,abs(Hc),'LineWidth',1.5);
 
@@ -190,7 +164,6 @@ title('Magnitude Frequency Response')
 grid on;
 
 %% Problem 1g)
-
 % Design 17 tap filter with fir2 command
 %
 % Note that the FIR2 function will force the size of the DFT to be a
@@ -204,7 +177,7 @@ h = fir2(16,0:0.125:1,[1 1 1 1 sqrt(2)/2 0 0 0 0],16,0);
 
 % Overlay the impulse response of the causal, symmetric filter and the
 % result of the fir2 command
-figure(9);
+figure(8);
 clf;
 n = 0:(length(h)-1);
 stem(n,hc,'LineWidth',1.5);
@@ -217,7 +190,7 @@ ylabel('Value');
 title('Impulse Response Comparison')
 
 % Plot the frequency response of both filters for comparison
-figure(10);
+figure(9);
 clf;
 [Hc,~] = freqz(hc,1,512);
 [H,w] = freqz(h,1,512);
@@ -232,12 +205,11 @@ title('Magnitude Frequency Response Comparison')
 legend('Hc(e^{j\omega})','Hm(e^{j\omega})')
 
 %% Problem 2
-
 % Design FIR filter with the firpm function
 h = firpm(16,[0 0.37 0.71 1],[1 1 0 0]);
 
 % Plot the frequency response of the resulting filter
-figure(11);
+figure(10);
 clf;
 [H,w] = freqz(h,1,512);
 semilogy(w/pi,abs(H),'LineWidth',1.5);
@@ -245,5 +217,3 @@ grid on;
 xlabel('Normalized Frequency (/times /pi rad/sample)')
 ylabel('Magnitude');
 title('Magntiude Frequency Response');
-
-
