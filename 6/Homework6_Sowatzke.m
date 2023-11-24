@@ -5,6 +5,10 @@
 % Subject: Script contains code for Homework 6
 %
 
+% Clear workspace and close open plots
+clear;
+close all;
+
 %% Problem 1a)
 % length of array H
 N = 16;
