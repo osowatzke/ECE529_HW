@@ -153,7 +153,7 @@
 				\caption{Causal Impulse Response $hc[n]$}
 			\end{figure}
 			
-			To further emphasize our selection of the causal impulse response, $h_c[n]$, we can compare $|H[k]|$ to $|H_c(e^{j\omega})|$ when the endpoints are halved and when the endpoints are not halved.
+			To further validate our selection of the causal impulse response, $h_c[n]$, we can compare $|H[k]|$ to $|H_c(e^{j\omega})|$ when the endpoints are halved and when the endpoints are not halved.
 			
 			\begin{figure}[H]
 				\centerline{\fbox{\includegraphics[width=0.5\textwidth]{prob1d_frequency_response1.png}}}
@@ -226,7 +226,7 @@
 		\texttt{firpm} function. Design an FIR LPF with length 17, passband cutoff frequency $\omega = 0.37\pi$, and stopband cutoff frequency $\omega = 0.71\pi$ using the \texttt{firpm} function. Compare to the result in Problem 1(g).
 		
 		\pagebreak
-		The FIR filter with be designed with the \texttt{firpm} function as follows:
+		The FIR filter will be designed with the \texttt{firpm} function as follows:
 		
 		\texttt{h = firpm(16, [0 0.37 0.71 1], [1 1 0 0]);}
 		
